@@ -16,3 +16,8 @@ exports.actionIndex = async (req, res) => {
 
     res.send(users);
 }
+
+exports.actionIndexTeacher = async (req, res) => {
+
+    res.send(req.cookie.userIndentity);
+}
