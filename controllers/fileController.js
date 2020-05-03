@@ -1,4 +1,3 @@
-const crypto = require('crypto');
 const DateModule = require('./../lib/date.js');
 
 const UserModel     = require('./../models/UserModel');

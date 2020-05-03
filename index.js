@@ -78,12 +78,13 @@ app.set('port', process.env.PORT || config.app.port);
 
 
 //routes require
-const indexRouter   = require('./routes/indexRouter');
-const fileRouter    = require('./routes/fileRouter');
-const authRouter    = require('./routes/authRouter');
-const studentRouter = require('./routes/studentRouter');
-const teacherRouter = require('./routes/teacherRouter');
-const adminRouter   = require('./routes/adminRouter');
+const indexRouter    = require('./routes/indexRouter');
+const fileRouter     = require('./routes/fileRouter');
+const exerciseRouter = require('./routes/exerciseRouter');
+const authRouter     = require('./routes/authRouter');
+const studentRouter  = require('./routes/studentRouter');
+const teacherRouter  = require('./routes/teacherRouter');
+const adminRouter    = require('./routes/adminRouter');
 
 //routes init
 app.use('/', indexRouter);
