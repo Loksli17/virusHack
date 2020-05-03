@@ -8,6 +8,24 @@ window.addEventListener("load", () => {
         }, false);
     }
 
+    getFirstExerciseOfTheDay();
+
+    function getFirstExerciseOfTheDay() {
+        let date = new Date();
+        let day = date.getDate();
+        let days = document.getElementsByClassName("day");
+        let currentDay = days[day - 1];
+        let firstExercise;
+        for (let i = 0; i < currentDay.children.length; i++) {
+            let exercise = currentDay.children[i];
+            if (exercise.id != 0) {
+                firstExercise = exercise;
+            }
+        }
+        let currentId = firstExercise.id;
+        showInfo(currentId);
+    }
+
     function showInfo(id) {
         console.log(id);
         let wrapper = document.getElementById("wrapper");
@@ -18,7 +36,6 @@ window.addEventListener("load", () => {
                     thisExercise = e;
                 }
             });
-
             // if (wrapper.children[1]) {
             //     wrapper.removeChild(wrapper.children[1]);
             // }
