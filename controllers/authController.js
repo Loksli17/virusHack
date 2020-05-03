@@ -94,6 +94,10 @@ exports.actionLogin = async (req, res) => {
     //проверка роли пользователя
     if (user.role_id == 3){
         redirect('/teacher');
+        return;
+    }else if (user.role_id == 4){
+        redirect('/student');
+        return;
     }
 
     res.redirect('/');
