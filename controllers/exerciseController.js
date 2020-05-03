@@ -9,7 +9,13 @@ const File     = new FileModel();
 
 
 exports.actionView = async (req, res) => {
+    let id = req.query.id;
+    id  = Number(id);
+    console.log(id);
 
+    if (id != undefined){
+        
+    }
 }
 
 exports.actionEdit = async (req, res) => {
