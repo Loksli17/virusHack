@@ -23,8 +23,8 @@ window.addEventListener("load", () => {
                 firstExercise = exercise;
             }
         }
-        let currentId = firstExercise.id;
-        showInfo(currentId);
+        let id = firstExercise.id;
+        showInfo(id);
     }
 
     function showInfo(id) {
@@ -77,6 +77,8 @@ window.addEventListener("load", () => {
             submit.style.visibility = "hidden";
             let file = document.getElementById("file");
             file.value = "";
+            let progress = document.getElementById("progress");
+            progress.style.visibility = "hidden";
             let info = document.getElementsByClassName("info")[0];
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
             exerciseName.innerHTML = thisExercise.subTitle;

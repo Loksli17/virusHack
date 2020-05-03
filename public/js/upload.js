@@ -24,6 +24,7 @@ function upload(e) {
     ajax.upload.onprogress = (e) => {
         let percent = e.loaded / e.total;
         console.log(e.loaded, e.total);
+        progress.style.visibility = "visible";
         progress.setAttribute('max', event.total);
         progress.value = event.loaded;
     }
