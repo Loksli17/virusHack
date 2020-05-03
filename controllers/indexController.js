@@ -38,7 +38,7 @@ exports.actionIndexStudent = async (req, res) => {
             'subject.id',
             'user.firstname as teacherFirstName',
             'user.lastname as teacherLastName',
-            'user.patronyc as teacherpatronyc',
+            'user.patronyc as teacherPatronyc',
         ],
         where: [
             ['date >= ', firstDate, 'AND'],
@@ -57,7 +57,13 @@ exports.actionIndexStudent = async (req, res) => {
         }
         exerView[i].exercises = [];
         for(let j = 0; j < 5; j++){
-            exerView[i].exercises.push({time: '', subTitle: '', teacher: '', number: ''});
+            exerView[i].exercises.push({
+                id      : 0,
+                time    : '',
+                subTitle: '',
+                teacher : '',
+                number  : '',
+            });
         }
     }
 
@@ -66,18 +72,17 @@ exports.actionIndexStudent = async (req, res) => {
             date = new Date(exercises[i].date),
             day  = date.getDay();
 
-        // console.log(day, exercises[i].number);
-        // console.log(exerView[day - 1].exercises[exercises[i].number - 1]);
-
+        exerView[day - 1].exercises[exercises[i].number - 1].id       = exercises[i].id;
         exerView[day - 1].exercises[exercises[i].number - 1].time     = exercises[i].time;
         exerView[day - 1].exercises[exercises[i].number - 1].number   = exercises[i].number;
         exerView[day - 1].exercises[exercises[i].number - 1].subTitle = exercises[i].subTitle;
-        exerView[day - 1].exercises[exercises[i].number - 1].time     = exercises[i].time;
+        exerView[day - 1].exercises[exercises[i].number - 1].teacher  = exercises[i].teacherLastName + exercises[i].teacherFirstName.substr(0, 1) + '. ' + exercises[i].teacherPatronyc.substr(0, 1) + '. ';
     }
 
-    console.log(exerView[1]);
-
-    res.send(exercises);
+    res.render('index/student', {
+        exerView : exerView,
+        exercises: exercises,
+    });
 }
 
 exports.actionIndexAdmin = async(req, res) => {

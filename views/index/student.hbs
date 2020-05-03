@@ -1,0 +1,28 @@
+<style media="screen">
+    .week{
+        display: flex;
+    }
+</style>
+
+<div class="week">
+{{#each exerView}}
+    <div class="day">
+        {{#each this.exercises}}
+        <div class="exercise" id='{{this.id}}'>
+            <div class="number">
+                {{this.number}}
+            </div>
+            <div class="sub-title">
+                {{this.subTitle}}
+            </div>
+            <div class="teacher">
+                {{this.teacher}}
+            </div>
+            <div class="time">
+                {{this.time}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+{{/each}}
+</div>
