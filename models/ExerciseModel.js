@@ -13,7 +13,7 @@ ExerciseModel.prototype.constructor = ExerciseModel;
 ExerciseModel.prototype.rules = {
     integer : ['group_id', 'subject_id'],
     string  : ['time'],
-    required: ['date', 'time', 'group_id', 'subject_id'],
+    required: ['link', 'desc'],
 };
 
 ExerciseModel.prototype.rulesMesseges = {

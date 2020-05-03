@@ -52,7 +52,6 @@ exports.actionIndexTeacher = async (req, res) => {
             ['inner', 'user', 'user_has_subject.user_id = user.id'],
         ],
     });
-    console.log(exercises);
 
     for (let i = 0; i < exerView.length; i++) {
         if (currentDate.getDay() - 1 == i) {
@@ -126,7 +125,6 @@ exports.actionIndexStudent = async (req, res) => {
             ['inner', 'user', 'user_has_subject.user_id = user.id'],
         ],
     });
-    console.log(exercises[1], exercises[2]);
 
     for (let i = 0; i < exerView.length; i++) {
         if (currentDate.getDay() - 1 == i) {
@@ -171,8 +169,6 @@ exports.actionIndexStudent = async (req, res) => {
         }
 
     }
-
-    console.log(exerView[1], exercises);
     res.render('index/student', {
         exerView: exerView,
         exercises: JSON.stringify(exercises),
