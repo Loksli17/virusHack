@@ -3,13 +3,21 @@ const DateModule = require('./../lib/date.js');
 
 const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
+<<<<<<< HEAD
 const FileModel = require('./../models/FileModel');
 const GroupModel = require('./../models/GroupModel');
+=======
+const FileModel     = require('./../models/FileModel');
+>>>>>>> cebe901850f69db01c5dbd8053b9b6765247bde8
 
-const User = new UserModel();
+const User     = new UserModel();
 const Exercise = new ExerciseModel();
+<<<<<<< HEAD
 const File = new FileModel();
 const Group = new GroupModel();
+=======
+const File     = new FileModel();
+>>>>>>> cebe901850f69db01c5dbd8053b9b6765247bde8
 
 
 exports.actionIndex = async (req, res) => {
@@ -18,7 +26,6 @@ exports.actionIndex = async (req, res) => {
 
 
 exports.actionIndexTeacher = async (req, res) => {
-    console.log(req.session.userIndentity)
     let
         datesWeek   = DateModule.getDatesWeek(),
         exercises   = [],
@@ -26,7 +33,6 @@ exports.actionIndexTeacher = async (req, res) => {
         firstDate   = DateModule.formatDbDate(datesWeek.firstDate),
         lastDate    = DateModule.formatDbDate(datesWeek.lastDate),
         currentDate = new Date();
-
 
     exercises = await Exercise.find('all', {
         select : [
@@ -128,8 +134,13 @@ exports.actionIndexStudent = async (req, res) => {
     });
 
 
+<<<<<<< HEAD
     for(let i = 0; i < exerView.length; i++){
         if(currentDate.getDay() - 1 == i){
+=======
+    for (let i = 0; i < exerView.length; i++) {
+        if (currentDate.getDay() - 1 == i){
+>>>>>>> cebe901850f69db01c5dbd8053b9b6765247bde8
             exerView[i].current = true;
         }
         exerView[i].exercises = [];
@@ -163,15 +174,14 @@ exports.actionIndexStudent = async (req, res) => {
                 ['exercise_id =', exercises[i].id, ''],
             ]
         });
-        console.log(file, exercises[i].id );
 
         exercises[i].files = [];
+
         for(j = 0; j < files.length; j++){
             exercises[i].files.push(files[j].title);
         }
 
     }
-    console.log(exercises);
 
     res.render('index/student', {
         exerView: exerView,
