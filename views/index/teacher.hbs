@@ -32,6 +32,19 @@
     .exercise-name {
         margin: 0px;
     }
+
+    .link {
+        color: black;
+        background: #ccc;
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 5px;
+        text-decoration: none;
+    }
+
+    .time-display {
+        font-size: 40px;
+    }
 </style>
 
 
@@ -63,7 +76,14 @@
             <h5 class="label">пара</h5>
             <h1 id="exercise-name" class="exercise-name"></h1>
         </div>
-        <a class="link" href="">Подключиться к занятию</a>
+        <div class="buttons">
+            <a id="setup" class="link" href="">Настроить задание</a>
+            <a id="goto" class="link" href="">Перейти в задание</a>
+        </div>
+        <a id="link" class="link" href="">Подключиться к занятию</a>
+        <div id="time" class="time-display">
+
+        </div>
     </div>
 </div>
 
