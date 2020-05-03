@@ -15,18 +15,18 @@
 </div>
 
 
-<form class="" action="/admin/users/{{action}}" method="post">
+<form class="" action="/exercise/{{action}}" method="post">
     <label>
         <div class="form-elem">
             <span>{{fields.email}}</span>
-            <input type="email" name="user[link]" value="{{formData.link}}" required>
+            <input type="text" name="exercise[link]" value="{{formData.link}}" required>
         </div>
     </label>
 
     <label for="">
         <div class="form-elem">
             <span>{{fields.phone}}</span>
-            <textarea name="user[desc]">{{formData.desc}}</textarea>
+            <textarea name="exercise[desc]">{{formData.desc}}</textarea>
         </div>
     </label>
 

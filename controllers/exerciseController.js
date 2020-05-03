@@ -102,7 +102,6 @@ exports.actionEdit = async (req, res) => {
 
     if(POST.do == undefined){
         res.render('exercise/edit', {
-            csrf    : res.locals._csrfToken,
             action  : 'edit?id=' + id,
             fields  : exercise.fields,
             formData: exercise,
@@ -111,5 +110,22 @@ exports.actionEdit = async (req, res) => {
         return;
     }
 
-    // let save = 
+    exerciseForm = POST.exercise;
+    exercise.date = DateModule.formatDbDate(exercise.date);
+    exercise.link = exerciseForm.link;
+    exercise.desc = exerciseForm.desc;
+
+    console.log(exerciseForm, exercise);
+
+    let save = Exercise.save(exercise, exercise.id);
+    if(save){
+        res.redirect('/teacher');
+    }else{
+        res.render('server/error.hbs', {
+            action  : 'edit?id=' + id,
+            fields  : exercise.fields,
+            formData: exercise,
+            files   : files,
+        });
+    }
 }
