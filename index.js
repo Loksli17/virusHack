@@ -82,12 +82,14 @@ const indexRouter = require('./routes/indexRouter');
 const authRouter = require('./routes/authRouter');
 const studentRouter = require('./routes/studentRouter');
 const teacherRouter = require('./routes/teacherRouter');
+const adminRouter = require('./routes/adminRouter');
 
 //routes init
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/student', studentRouter);
 app.use('/teacher', teacherRouter);
+app.use('/admin', adminRouter);
 
 //soft
 app.use(function(req, res){
