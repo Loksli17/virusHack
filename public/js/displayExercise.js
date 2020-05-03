@@ -13,18 +13,29 @@ window.addEventListener("load", () => {
 
     function getFirstExerciseOfTheDay() {
         let date = new Date();
-        let day = date.getDate();
+        let day = date.getDay();
+        console.log(day);
         let days = document.getElementsByClassName("day");
-        let currentDay = days[day - 1];
-        let firstExercise;
-        for (let i = 0; i < currentDay.children.length; i++) {
-            let exercise = currentDay.children[i];
-            if (exercise.id != 0) {
-                firstExercise = exercise;
+        if (day != 0) {
+            let currentDay = days[day - 1];
+            console.log(currentDay);
+            let firstExercise;
+            for (let i = 0; i < currentDay.children.length; i++) {
+                let exercise = currentDay.children[i];
+                if (exercise.id != 0) {
+                    firstExercise = exercise;
+                }
+            }
+
+            let id;
+            if (firstExercise) {
+                id = firstExercise.id;
+            }
+
+            if (id) {
+                showInfo(id);
             }
         }
-        let id = firstExercise.id;
-        showInfo(id);
     }
 
     function showInfo(id) {
@@ -105,7 +116,7 @@ window.addEventListener("load", () => {
             let link = document.getElementsByClassName("link")[0];
             link.href = thisExercise.link;
 
-            wrapper.children[wrapper.children.length - 1].style.visibility = "visible";
+            info.style.visibility = "visible";
 
         }
         if (id == 0 && wrapper.children[wrapper.children.length - 1]) {
@@ -121,7 +132,7 @@ window.addEventListener("load", () => {
 
             let teacherName = document.getElementsByClassName("teacher-name")[0];
             teacherName.innerHTML = "";
-            wrapper.children[wrapper.children.length - 1].style.visibility = "hidden";
+            info.style.visibility = "hidden";
         }
     }
 
