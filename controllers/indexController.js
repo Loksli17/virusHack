@@ -3,21 +3,13 @@ const DateModule = require('./../lib/date.js');
 
 const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
-<<<<<<< HEAD
 const FileModel = require('./../models/FileModel');
 const GroupModel = require('./../models/GroupModel');
-=======
-const FileModel     = require('./../models/FileModel');
->>>>>>> cebe901850f69db01c5dbd8053b9b6765247bde8
 
 const User     = new UserModel();
 const Exercise = new ExerciseModel();
-<<<<<<< HEAD
 const File = new FileModel();
 const Group = new GroupModel();
-=======
-const File     = new FileModel();
->>>>>>> cebe901850f69db01c5dbd8053b9b6765247bde8
 
 
 exports.actionIndex = async (req, res) => {
@@ -134,13 +126,8 @@ exports.actionIndexStudent = async (req, res) => {
     });
 
 
-<<<<<<< HEAD
-    for(let i = 0; i < exerView.length; i++){
-        if(currentDate.getDay() - 1 == i){
-=======
     for (let i = 0; i < exerView.length; i++) {
         if (currentDate.getDay() - 1 == i){
->>>>>>> cebe901850f69db01c5dbd8053b9b6765247bde8
             exerView[i].current = true;
         }
         exerView[i].exercises = [];
@@ -193,8 +180,10 @@ exports.actionIndexStudent = async (req, res) => {
 exports.actionIndexAdmin = async(req, res) => {
     let groups = [];
 
-    groups = await Group.find('all' ,{
-        sql : true
+    groups = await Group.find('all', {
+        join: [
+            ['inner', 'course', 'groups.course_id = course.id']
+        ]
     });
     console.log(groups);
 
