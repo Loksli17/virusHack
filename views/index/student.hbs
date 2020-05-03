@@ -45,7 +45,7 @@
     }
 
     progress{
-        margin: 2em auto;
+        margin: 10px 0px;
         display: block;
         border-radius : 8px;
         background: #fff;
@@ -59,6 +59,18 @@
                 background: -moz-linear-gradient(#4c4, #8f8 50%, #4c4);
                         background: -o-linear-gradient(#4c4, #8f8 50%, #4c4);
                                 background: linear-gradient(#4c4, #8f8 50%, #4c4);
+        border-radius: 8px;
+    }
+
+    progress::-moz-progress-bar {
+        background: -moz-linear-gradient(#4c4, #8f8 50%, #4c4);
+        border-radius: 8px;
+    }
+    progress::-webkit-progress-bar {
+        background: #fff;
+    }
+    progress::-webkit-progress-value {
+        background: -webkit-linear-gradient(#4c4, #8f8 50%, #4c4);
         border-radius: 8px;
     }
 </style>

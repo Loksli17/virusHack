@@ -64,7 +64,7 @@ app.use(async function(req, res, next){
             user.token = token;
             user.series = series;
 
-            console.log(`user ${user.name} was authed`);
+            console.log(`user ${user.firstname} was authed`);
 
             await User.save(user, user.id);
             req.session.userIndentity = user;
@@ -78,15 +78,17 @@ app.set('port', process.env.PORT || config.app.port);
 
 
 //routes require
-const indexRouter   = require('./routes/indexRouter');
-const fileRouter    = require('./routes/fileRouter');
-const authRouter    = require('./routes/authRouter');
-const studentRouter = require('./routes/studentRouter');
-const teacherRouter = require('./routes/teacherRouter');
-const adminRouter   = require('./routes/adminRouter');
+const indexRouter    = require('./routes/indexRouter');
+const fileRouter     = require('./routes/fileRouter');
+const exerciseRouter = require('./routes/exerciseRouter');
+const authRouter     = require('./routes/authRouter');
+const studentRouter  = require('./routes/studentRouter');
+const teacherRouter  = require('./routes/teacherRouter');
+const adminRouter    = require('./routes/adminRouter');
 
 //routes init
 app.use('/', indexRouter);
+app.use('/exercise', exerciseRouter);
 app.use('/auth', authRouter);
 app.use('/student', studentRouter);
 app.use('/teacher', teacherRouter);

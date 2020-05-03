@@ -120,6 +120,7 @@ exports.actionLogin = async (req, res) => {
     }
 
     res.redirect('/');
+    return;
 };
 
 

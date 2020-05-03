@@ -2,7 +2,7 @@ const modelMysql = require('../lib/Orm/mysqlOrm');
 
 //model of tasks-mysql
 function GroupModel(){
-    tableName = 'virushack.groups';
+    tableName = 'virushack.group';
     modelMysql.call(this, tableName);
 }
 
