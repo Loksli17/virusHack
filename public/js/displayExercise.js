@@ -1,9 +1,10 @@
+var id = 0;
 window.addEventListener("load", () => {
     console.log(array);
     let exercises = document.getElementsByClassName("exercise");
     for (let i = 0; i < exercises.length; i++) {
         exercises[i].addEventListener("click", () => {
-            let id = exercises[i].id;
+            id = exercises[i].id;
             showInfo(id)
         }, false);
     }

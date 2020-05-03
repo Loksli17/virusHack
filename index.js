@@ -25,7 +25,7 @@ app.use(
         }
     })
 );
-app.use(require('csurf')());
+// app.use(require('csurf')());
 
 //handlebars
 app.engine('hbs', expressHbs({
@@ -44,7 +44,7 @@ app.use(function(req, res, next){
     if(req.session.userIndentity != undefined){
         res.locals.user = req.session.userIndentity;
     }
-    res.locals._csrfToken = req.csrfToken();
+    // res.locals._csrfToken = req.csrfToken();
     next();
 });
 
@@ -78,11 +78,12 @@ app.set('port', process.env.PORT || config.app.port);
 
 
 //routes require
-const indexRouter = require('./routes/indexRouter');
-const authRouter = require('./routes/authRouter');
+const indexRouter   = require('./routes/indexRouter');
+const fileRouter    = require('./routes/fileRouter');
+const authRouter    = require('./routes/authRouter');
 const studentRouter = require('./routes/studentRouter');
 const teacherRouter = require('./routes/teacherRouter');
-const adminRouter = require('./routes/adminRouter');
+const adminRouter   = require('./routes/adminRouter');
 
 //routes init
 app.use('/', indexRouter);
@@ -90,6 +91,7 @@ app.use('/auth', authRouter);
 app.use('/student', studentRouter);
 app.use('/teacher', teacherRouter);
 app.use('/admin', adminRouter);
+app.use('/file', fileRouter);
 
 //soft
 app.use(function(req, res){
