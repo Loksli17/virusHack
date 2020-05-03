@@ -3,19 +3,56 @@ const DateModule = require('./../lib/date.js');
 const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
 const FileModel     = require('./../models/FileModel');
+const GroupModel    = require('./../models/GroupModel');
 
 const Exercise = new ExerciseModel();
 const File     = new FileModel();
-
+const Group    = new GroupModel();
+const User     = new UserModel();
 
 exports.actionView = async (req, res) => {
-    let id = req.query.id;
-    id  = Number(id);
-    console.log(id);
+    let users = {};
+    const
+        GET  = req.query;
 
-    if (id != undefined){
-        
+
+    if(GET.id == undefined){
+        res.render('server/error.hbs', {
+            layout :  null,
+            code   : '404',
+            messege: 'Страница не найдена',
+        });
+        return;
     }
+
+    let
+        id = Number(GET.id);
+
+    if(isNaN(id)){
+        id = 1;
+    }
+    users = await User.find('all', {
+        select: [
+            'user.id as id',
+            'user.firstname',
+            'user.lastname',
+            'file.title as ftitle',
+            'group.title as gtitle',
+            'user.role_id',
+        ],
+        where: [
+            ['user.role_id =','4','']
+        ],
+        
+        join : [
+            ['inner', 'file', 'file.user_id = user.id'],
+            ['inner' ,'group', 'user.group_id = group.id'],
+            ['inner', 'exercise', 'exercise.group_id = group.id'],
+        ]
+    })
+
+    console.log(users.length);
+
 }
 
 exports.actionEdit = async (req, res) => {
