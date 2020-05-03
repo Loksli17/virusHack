@@ -64,7 +64,7 @@ app.use(async function(req, res, next){
             user.token = token;
             user.series = series;
 
-            console.log(`user ${user.name} was authed`);
+            console.log(`user ${user.firstname} was authed`);
 
             await User.save(user, user.id);
             req.session.userIndentity = user;
