@@ -27,31 +27,36 @@ exports.actionView = async (req, res) => {
 
     let
         id = Number(GET.id);
-
+    console.log("id = "+id);
     if(isNaN(id)){
         id = 1;
     }
     users = await User.find('all', {
         select: [
-            'user.id as id',
+            'user.id as Id',
             'user.firstname',
             'user.lastname',
-            'file.title as ftitle',
+            //'file.title as ftitle',
             'group.title as gtitle',
             'user.role_id',
+            'exercise.id as exID',
         ],
+        group : 'Id',
         where: [
-            ['user.role_id =','4','']
+            ['user.role_id =','4',' AND '],
+            ['exercise.id = ',id, '']
         ],
-        
         join : [
-            ['inner', 'file', 'file.user_id = user.id'],
+            ['left', 'file', 'file.user_id = user.id'],
             ['inner' ,'group', 'user.group_id = group.id'],
             ['inner', 'exercise', 'exercise.group_id = group.id'],
         ]
     })
 
     console.log(users.length);
+    res.render('exercise/view', {
+        users : users,
+    })
 
 }
 
