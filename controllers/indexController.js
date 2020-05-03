@@ -20,20 +20,12 @@ exports.actionIndexTeacher = async (req, res) => {
 
 exports.actionIndexStudent = async (req, res) => {
     let
-<<<<<<< HEAD
         datesWeek   = DateModule.getDatesWeek(),
         exercises   = [],
         exerView    = [{}, {}, {}, {}, {}, {}],
         firstDate   = DateModule.formatDbDate(datesWeek.firstDate),
         lastDate    = DateModule.formatDbDate(datesWeek.lastDate),
-        file        =
-=======
-        datesWeek = DateModule.getDatesWeek(),
-        exercises = [],
-        exerView = [{}, {}, {}, {}, {}, {}],
-        firstDate = DateModule.formatDbDate(datesWeek.firstDate),
-        lastDate = DateModule.formatDbDate(datesWeek.lastDate),
->>>>>>> 33f82b0604fc2b77bd32fa3b20a40d7e9695ce41
+        // file        =
         currentDate = new Date();
 
 
@@ -43,6 +35,7 @@ exports.actionIndexStudent = async (req, res) => {
             'exercise.date as date',
             'exercise.time as time',
             'exercise.number as number',
+            'exercise.desc as desc',
             'subject.title as subTitle',
             'subject.id',
             'user.firstname as teacherFirstName',
@@ -94,11 +87,7 @@ exports.actionIndexStudent = async (req, res) => {
     });
 }
 
-<<<<<<< HEAD
 
 exports.actionIndexAdmin = async(req, res) => {
-=======
-exports.actionIndexAdmin = async (req, res) => {
->>>>>>> 33f82b0604fc2b77bd32fa3b20a40d7e9695ce41
 
 }
