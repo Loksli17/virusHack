@@ -108,6 +108,7 @@ exports.actionIndexStudent = async (req, res) => {
             'exercise.time as time',
             'exercise.number as number',
             'exercise.desc as description',
+            'exercise.link as link',
             'subject.title as subTitle',
             'subject.id as subId',
             'user.id as teacherId',
