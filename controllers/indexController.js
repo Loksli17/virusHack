@@ -34,6 +34,7 @@ exports.actionIndexStudent = async (req, res) => {
             'exercise.date as date',
             'exercise.time as time',
             'subject.title as subTitle',
+            'subject.id',
             'user.firstname as teacherFirstName',
             'user.lastname as teacherLastName',
             'user.patronyc as teacherpatronyc',
@@ -43,17 +44,15 @@ exports.actionIndexStudent = async (req, res) => {
             ['date >= ', firstDate, ''],
         ],
         join: [
-            [
-                'inner', 'subject', 'subject.id = subject_id',
-                'inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id',
-                'inner', 'user', 'user_has_subject.user_id = user.id'
-            ],
+            ['inner', 'subject', 'subject.id = subject_id'],
+            ['inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id'],
+            ['inner', 'user', 'user_has_subject.user_id = user.id'],
         ],
     });
 
     for(let i = 0; i < exerView.length; i++){
         for(let j = 0; j < 5; j++){
-
+            exerView[]
         }
     }
 
