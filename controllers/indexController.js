@@ -123,14 +123,9 @@ exports.actionIndexStudent = async (req, res) => {
         ],
     });
 
-<<<<<<< HEAD
 
-    for(let i = 0; i < exerView.length; i++){
-        if(currentDate.getDay() - 1 == i){
-=======
     for (let i = 0; i < exerView.length; i++) {
-        if (currentDate.getDay() - 1 == i) {
->>>>>>> eb44e91d1cef42b95c528721919ea93ad91c772d
+        if (currentDate.getDay() - 1 == i){
             exerView[i].current = true;
         }
         exerView[i].exercises = [];

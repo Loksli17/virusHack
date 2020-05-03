@@ -5,7 +5,6 @@ const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
 const FileModel     = require('./../models/FileModel');
 
-const User     = new UserModel();
 const Exercise = new ExerciseModel();
 const File     = new FileModel();
 
@@ -30,7 +29,7 @@ exports.actionFileUpload = (req, res) => {
         return;
     }
 
-    if(file.size > 8 * 1024 * 1024 * 5){
+    if(file.size > 8 * 1024 * 1024 * 10){
         res.status(500);
         res.send();
         return;
