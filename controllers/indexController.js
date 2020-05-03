@@ -2,10 +2,10 @@ const crypto     = require('crypto');
 const DateModule = require('./../lib/date.js');
 
 const UserModel     = require('./../models/UserModel');
-const ExersiceModel = require('./../models/ExersiceModel');
+const ExerciseModel = require('./../models/ExerciseModel');
 
 const User     = new UserModel();
-const Exersice = new ExersiceModel();
+const Exersice = new ExerciseModel();
 
 
 exports.actionIndex = async(req, res) => {
@@ -32,11 +32,11 @@ exports.actionIndexTeacher = async (req, res) => {
             [
                 'inner', 'subject', 'subject.id = subject_id',
                 'inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id',
-                'inner'', 'user', 'user_has_subject.user_id = user.id'
+                'inner', 'user', 'user_has_subject.user_id = user.id'
             ],
         ],
     });
-    res.send(req.cookie.userIndentity);
+    res.send(req.cookies.userIndentity);
 }
 
 exports.actionIndexStudent = async(req, res) => {
@@ -56,7 +56,7 @@ exports.actionIndexStudent = async(req, res) => {
             [
                 'inner', 'subject', 'subject.id = subject_id',
                 'inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id',
-                'inner'', 'user', 'user_has_subject.user_id = user.id'
+                'inner', 'user', 'user_has_subject.user_id = user.id'
             ],
         ],
     });

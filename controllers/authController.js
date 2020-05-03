@@ -39,7 +39,7 @@ exports.actionLogin = async (req, res) => {
             ['email = ', email, ''],
         ],
         join: [
-            ['inner', 'role', 'user.user_id = role.id']
+            ['inner', 'role', 'user.role_id = role.id']
         ]
     });
     console.log(email, password);
@@ -93,10 +93,10 @@ exports.actionLogin = async (req, res) => {
 
     //проверка роли пользователя
     if (user.role_id == 3){
-        redirect('/teacher');
+        res.redirect('/teacher');
         return;
     }else if (user.role_id == 4){
-        redirect('/student');
+        res.redirect('/student');
         return;
     }
 
