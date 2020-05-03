@@ -34,7 +34,7 @@ exports.actionIndexTeacher = async (req, res) => {
             'exercise.number as number',
             'exercise.link as link',
             'subject.title as subTitle',
-            'subject.id',
+            'subject.id as subId',
             'user.firstname as teacherFirstName',
             'user.lastname as teacherLastName',
             'user.patronyc as teacherPatronyc',
