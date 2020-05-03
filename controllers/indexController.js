@@ -1,10 +1,10 @@
-const crypto     = require('crypto');
+const crypto = require('crypto');
 const DateModule = require('./../lib/date.js');
 
-const UserModel     = require('./../models/UserModel');
+const UserModel = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
 
-const User     = new UserModel();
+const User = new UserModel();
 const Exercise = new ExerciseModel();
 
 
@@ -95,17 +95,20 @@ exports.actionIndexStudent = async (req, res) => {
         exerView    = [{}, {}, {}, {}, {}, {}],
         firstDate   = DateModule.formatDbDate(datesWeek.firstDate),
         lastDate    = DateModule.formatDbDate(datesWeek.lastDate),
+        files       =
         currentDate = new Date();
 
 
     exercises = await Exercise.find('all', {
-        select : [
+        select: [
             'exercise.id as id',
             'exercise.date as date',
             'exercise.time as time',
             'exercise.number as number',
+            'exercise.desc as description',
             'subject.title as subTitle',
             'subject.id',
+            'user.id as teacherId',
             'user.firstname as teacherFirstName',
             'user.lastname as teacherLastName',
             'user.patronyc as teacherPatronyc',
@@ -121,40 +124,48 @@ exports.actionIndexStudent = async (req, res) => {
         ],
     });
 
+<<<<<<< HEAD
 
     for(let i = 0; i < exerView.length; i++){
         if(currentDate.getDay() - 1 == i){
+=======
+    for (let i = 0; i < exerView.length; i++) {
+        if (currentDate.getDay() - 1 == i) {
+>>>>>>> 4ee7f0ba7603879987f1dd7dd478e545550a816c
             exerView[i].current = true;
         }
         exerView[i].exercises = [];
-        for(let j = 0; j < 5; j++){
+        for (let j = 0; j < 5; j++) {
             exerView[i].exercises.push({
-                id      : 0,
-                time    : '',
+                id: 0,
+                time: '',
                 subTitle: '',
-                teacher : '',
-                number  : '',
+                teacher: '',
+                number: '',
             });
         }
     }
 
-    for(let i = 0; i < exercises.length; i++){
+    for (let i = 0; i < exercises.length; i++) {
         let
             date = new Date(exercises[i].date),
-            day  = date.getDay();
+            day = date.getDay();
 
-        exerView[day - 1].exercises[exercises[i].number - 1].id       = exercises[i].id;
-        exerView[day - 1].exercises[exercises[i].number - 1].time     = exercises[i].time;
-        exerView[day - 1].exercises[exercises[i].number - 1].number   = exercises[i].number;
+        exerView[day - 1].exercises[exercises[i].number - 1].id = exercises[i].id;
+        exerView[day - 1].exercises[exercises[i].number - 1].time = exercises[i].time;
+        exerView[day - 1].exercises[exercises[i].number - 1].number = exercises[i].number;
         exerView[day - 1].exercises[exercises[i].number - 1].subTitle = exercises[i].subTitle;
-        exerView[day - 1].exercises[exercises[i].number - 1].teacher  = exercises[i].teacherLastName + exercises[i].teacherFirstName.substr(0, 1) + '. ' + exercises[i].teacherPatronyc.substr(0, 1) + '. ';
+        exerView[day - 1].exercises[exercises[i].number - 1].teacher = exercises[i].teacherLastName + exercises[i].teacherFirstName.substr(0, 1) + '. ' + exercises[i].teacherPatronyc.substr(0, 1) + '. ';
+
+
     }
 
     res.render('index/student', {
-        exerView : exerView,
-        exercises: exercises,
+        exerView: exerView,
+        exercises: JSON.stringify(exercises),
     });
 }
+
 
 exports.actionIndexAdmin = async(req, res) => {
 
