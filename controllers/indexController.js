@@ -11,5 +11,8 @@ exports.actionIndex = async (req, res) => {
         ],
     });
 
+    date = new Date();
+    console.log(date.getDay())
+
     res.send(users);
 }
