@@ -88,7 +88,7 @@ exports.actionLogin = async (req, res) => {
         await User.save(user, user.id);
     }
 
-    console.log(`user ${user.name} was authed`);
+    console.log(`user ${user.firsname} was authed`);
     req.session.userIndentity = user;
 
     //проверка роли пользователя
@@ -98,6 +98,8 @@ exports.actionLogin = async (req, res) => {
     }else if (user.role_id == 4){
         res.redirect('/student');
         return;
+    }else if (user.role_id == 1){
+        res.redirect('/admin');
     }
 
     res.redirect('/');

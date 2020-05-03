@@ -15,7 +15,7 @@ exports.actionIndex = async(req, res) => {
 
     res.send(users);
 }
-exports.actionIndexTeacher = async (req, res) => {
+exports.actionIndexTeacher = async(req, res) => {
     let
         datesWeek = DateModule.getDatesWeek(),
         exercises = [];
@@ -36,7 +36,7 @@ exports.actionIndexTeacher = async (req, res) => {
             ],
         ],
     });
-    res.send(req.cookies.userIndentity);
+    res.send(req.session.userIndentity);
 }
 
 exports.actionIndexStudent = async(req, res) => {
@@ -60,4 +60,8 @@ exports.actionIndexStudent = async(req, res) => {
             ],
         ],
     });
+}
+
+exports.actionIndexAdmin = async(req,res){
+    
 }
