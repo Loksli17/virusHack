@@ -1,18 +1,25 @@
 window.addEventListener("load", () => {
     let form = document.querySelector('.file-form');
-        form.addEventListener('submit', upload, false);
+    form.addEventListener('submit', upload, false);
+
+    let file = document.getElementById("file");
+    file.addEventListener("change", () => {
+        let submit = document.getElementById("submit");
+        submit.style.visibility = "visible";
+        console.log("kek");
+    }, true);
 }, true);
 
 
-function upload(e){
+function upload(e) {
     e.stopPropagation();
     e.preventDefault();
 
     let
-        progress  = document.querySelector('progress'),
-        formData  = new FormData(),
-        file      = e.target.elements[0].files[0]
-        ajax      = new XMLHttpRequest();
+        progress = document.querySelector('progress'),
+        formData = new FormData(),
+        file = e.target.elements[0].files[0]
+    ajax = new XMLHttpRequest();
 
     ajax.upload.onprogress = (e) => {
         let percent = e.loaded / e.total;
@@ -21,11 +28,11 @@ function upload(e){
         progress.value = event.loaded;
     }
 
-    ajax.onload = ajax.onerror = function(){
+    ajax.onload = ajax.onerror = function() {
         console.log(this.status);
-        if(this.status == 200){
+        if (this.status == 200) {
 
-        }else{
+        } else {
 
         }
     }
