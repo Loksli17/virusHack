@@ -10,18 +10,19 @@ window.addEventListener("load", () => {
 
     function showInfo(id) {
         console.log(id);
-        let thisExercise;
-        array.forEach((e) => {
-            if (e.id == id) {
-                thisExercise = e;
-            }
-        });
-
         let wrapper = document.getElementById("wrapper");
-        if (wrapper.children[1]) {
-            console.log("fuck");
-            wrapper.removeChild(wrapper.children[1]);
-        } else {
+        if (id != 0) {
+            let thisExercise;
+            array.forEach((e) => {
+                if (e.id == id) {
+                    thisExercise = e;
+                }
+            });
+
+            if (wrapper.children[1]) {
+                wrapper.removeChild(wrapper.children[1]);
+            }
+
             let info = document.createElement("div");
             info.className = "info";
             let name = document.createElement("div");
@@ -33,15 +34,22 @@ window.addEventListener("load", () => {
             exerciseName.id = "exercise-name";
             exerciseName.className = "exercise-name";
             exerciseName.innerHTML = thisExercise.subTitle;
+            let description = document.createElement("div");
+            description.className = "description";
+            description.innerHTML = thisExercise.description;
             let teacherName = document.createElement("div");
             teacherName.className = "teacher-name";
             teacherName.innerHTML = thisExercise.teacherFirstName + " " + thisExercise.teacherLastName + " " + thisExercise.teacherPatronyc;
             name.appendChild(label);
             name.appendChild(exerciseName);
             info.appendChild(name);
+            info.appendChild(description);
             info.appendChild(teacherName);
             wrapper.appendChild(info);
         }
-
+        if (id == 0 && wrapper.children[1]) {
+            wrapper.removeChild(wrapper.children[1]);
+        }
     }
+
 }, true);
