@@ -20,8 +20,11 @@ exports.actionFileUpload = (req, res) => {
     }
 
     let
-        file = req.file,
-        POST = req.body;
+        file     = req.file,
+        POST     = req.body,
+        fileDb   = {};
+
+    console.log(POST.idExercise);
 
     if(file.mimetype != 'application/pdf' && file.mimetype != 'application/zip' && file.mimetype != 'application/msword'){
         res.status(500);
@@ -33,5 +36,21 @@ exports.actionFileUpload = (req, res) => {
         res.status(500);
         res.send();
         return;
+    }
+
+    fileDb = {
+        title      : file.filename,
+        user_id    : req.session.userIndentity.id,
+        exercise_id: POST.idExercise,
+    }
+
+    let result = File.save(fileDb);
+
+    if(result){
+        res.status(200);
+        res.send();
+    }else{
+        res.status(500);
+        res.send();
     }
 }

@@ -1,11 +1,30 @@
+var id = 0;
 window.addEventListener("load", () => {
     console.log(array);
     let exercises = document.getElementsByClassName("exercise");
     for (let i = 0; i < exercises.length; i++) {
         exercises[i].addEventListener("click", () => {
-            let id = exercises[i].id;
+            id = exercises[i].id;
             showInfo(id)
         }, false);
+    }
+
+    getFirstExerciseOfTheDay();
+
+    function getFirstExerciseOfTheDay() {
+        let date = new Date();
+        let day = date.getDate();
+        let days = document.getElementsByClassName("day");
+        let currentDay = days[day - 1];
+        let firstExercise;
+        for (let i = 0; i < currentDay.children.length; i++) {
+            let exercise = currentDay.children[i];
+            if (exercise.id != 0) {
+                firstExercise = exercise;
+            }
+        }
+        let currentId = firstExercise.id;
+        showInfo(currentId);
     }
 
     function showInfo(id) {
@@ -18,7 +37,6 @@ window.addEventListener("load", () => {
                     thisExercise = e;
                 }
             });
-
             // if (wrapper.children[1]) {
             //     wrapper.removeChild(wrapper.children[1]);
             // }
@@ -55,6 +73,10 @@ window.addEventListener("load", () => {
             // info.appendChild(teacherName);
             // info.style.visibility = "visible";
             // wrapper.appendChild(info);
+            let submit = document.getElementById("submit");
+            submit.style.visibility = "hidden";
+            let file = document.getElementById("file");
+            file.value = "";
             let info = document.getElementsByClassName("info")[0];
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
             exerciseName.innerHTML = thisExercise.subTitle;

@@ -11,8 +11,9 @@ FileModel.prototype = Object.create(modelMysql.prototype);
 FileModel.prototype.constructor = FileModel;
 
 FileModel.prototype.rules = {
-    integer: ['user_id', 'id', 'exercise_id'],
-    string : ['title'],
+    integer : ['user_id', 'id', 'exercise_id'],
+    string  : ['title'],
+    required: ['title', 'user_id', 'exercise_id'],
 };
 
 FileModel.prototype.rulesMesseges = {
