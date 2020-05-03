@@ -33,9 +33,10 @@ exports.actionEdit = async (req, res) => {
         id = 1;
     }
 
-    let exercise = {};
-
-    exercise.findById(id);
+    let
+        exercise = await Exercise.findById(id),
+        files    = await File
+    console.log(exercise);
 
     if(exercise == undefined){
         res.render('server/error.hbs', {
@@ -48,12 +49,10 @@ exports.actionEdit = async (req, res) => {
 
     if(POST.do == undefined){
         res.render('exercise/edit', {
-            layout  : 'admin',
             csrf    : res.locals._csrfToken,
-            roles   : roles,
             action  : 'edit?id=' + id,
             fields  : exercise.fields,
-            formData: user,
+            formData: exercise,
         });
         return;
     }

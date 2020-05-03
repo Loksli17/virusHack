@@ -84,7 +84,7 @@ exports.actionIndexTeacher = async (req, res) => {
         exerView[day - 1].exercises[exercises[i].number - 1].teacher  = exercises[i].teacherLastName + exercises[i].teacherFirstName.substr(0, 1) + '. ' + exercises[i].teacherPatronyc.substr(0, 1) + '. ';
     }
 
-    res.render('index/student', {
+    res.render('index/teacher', {
         exerView : exerView,
         exercises: exercises,
     });
