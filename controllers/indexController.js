@@ -5,10 +5,11 @@ const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
 
 const User     = new UserModel();
-const Exersice = new ExerciseModel();
+const Exercise = new ExerciseModel();
 
 
 exports.actionIndex = async(req, res) => {
+<<<<<<< HEAD
     actionIndexStudent();
 
     let dates = DateModule.getDatesWeek();
@@ -16,11 +17,17 @@ exports.actionIndex = async(req, res) => {
     res.send(users);
 }
 exports.actionIndexTeacher = async(req, res) => {
+=======
+>>>>>>> a4e05f92e2be1e89cf62450e7e8bb41928e27821
     let
         datesWeek = DateModule.getDatesWeek(),
-        exercises = [];
+        exercises = [],
+        firstDate = DateModule.formatDbDate(datesWeek.firstDate),
+        lastDate  = DateModule.formatDbDate(datesWeek.lastDate);
 
-    exercises = Exersice.find('all', {
+    console.log(datesWeek);
+
+    exercises = await Exercise.find('all', {
         // select : [
         //
         // ],
@@ -36,30 +43,15 @@ exports.actionIndexTeacher = async(req, res) => {
             ],
         ],
     });
+<<<<<<< HEAD
     res.send(req.session.userIndentity);
 }
+=======
+>>>>>>> a4e05f92e2be1e89cf62450e7e8bb41928e27821
 
-exports.actionIndexStudent = async(req, res) => {
-    let
-        datesWeek = DateModule.getDatesWeek(),
-        exercises = [];
+    console.log(exercises);
 
-    exercises = Exersice.find('all', {
-        // select : [
-        //
-        // ],
-        where: [
-            ['date >= ', datesWeek.firtsDate, 'AND'],
-            ['date <= ', datesWeek.lastDate, ''],
-        ],
-        join: [
-            [
-                'inner', 'subject', 'subject.id = subject_id',
-                'inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id',
-                'inner', 'user', 'user_has_subject.user_id = user.id'
-            ],
-        ],
-    });
+    res.send(exercises);
 }
 
 exports.actionIndexAdmin = async(req,res){
