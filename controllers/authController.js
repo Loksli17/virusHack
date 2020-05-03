@@ -35,6 +35,20 @@ exports.actionLogin = async (req, res) => {
     }
 
     user = await User.find('one', {
+        select : [
+            'user.id as id',
+            'user.firstname',
+            'user.lastname',
+            'user.email',
+            'user.pass',
+            'user.email',
+            'user.token',
+            'user.series',
+            'user.role_id',
+            'user.group_id',
+            'role.title as title',
+
+        ],
         where: [
             ['email = ', email, ''],
         ],
