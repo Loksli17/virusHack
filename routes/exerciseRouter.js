@@ -22,6 +22,7 @@ const storageConfig = multer.diskStorage({
 const upload = multer({storage: storageConfig});
 
 const exerciseRouter = express.Router();
-exerciseRouter.all('/', upload.single('file'), exerciseController.actionView);
+exerciseRouter.all('/', exerciseController.actionView);
+exerciseRouter.all('/edit', exerciseController.actionEdit);
 
 module.exports = exerciseRouter;

@@ -88,6 +88,7 @@ const adminRouter    = require('./routes/adminRouter');
 
 //routes init
 app.use('/', indexRouter);
+app.use('/exercise', exerciseRouter);
 app.use('/auth', authRouter);
 app.use('/student', studentRouter);
 app.use('/teacher', teacherRouter);
