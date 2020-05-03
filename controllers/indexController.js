@@ -4,10 +4,12 @@ const DateModule = require('./../lib/date.js');
 const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
 const FileModel = require('./../models/FileModel');
+const GroupModel = require('./../models/GroupModel');
 
 const User = new UserModel();
 const Exercise = new ExerciseModel();
 const File = new FileModel();
+const Group = new GroupModel();
 
 
 exports.actionIndex = async (req, res) => {
@@ -125,14 +127,9 @@ exports.actionIndexStudent = async (req, res) => {
         ],
     });
 
-<<<<<<< HEAD
 
     for(let i = 0; i < exerView.length; i++){
         if(currentDate.getDay() - 1 == i){
-=======
-    for (let i = 0; i < exerView.length; i++) {
-        if (currentDate.getDay() - 1 == i) {
->>>>>>> eb44e91d1cef42b95c528721919ea93ad91c772d
             exerView[i].current = true;
         }
         exerView[i].exercises = [];
@@ -184,5 +181,12 @@ exports.actionIndexStudent = async (req, res) => {
 
 
 exports.actionIndexAdmin = async(req, res) => {
+    let groups = [];
 
+    groups = await Group.find('all' ,{
+        sql : true
+    });
+    console.log(groups);
+
+    res.send(groups);
 }
