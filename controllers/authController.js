@@ -115,7 +115,7 @@ exports.actionLogin = async (req, res) => {
     }else if (user.role_id == 4){
         res.redirect('/student');
         return;
-    }else if (user.role_id == 1){
+    }else if (user.role_id == 2){
         res.redirect('/admin');
     }
 

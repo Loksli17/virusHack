@@ -3,11 +3,13 @@ const DateModule = require('./../lib/date.js');
 
 const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
-const FileModel     = require('./../models/FileModel');
+const FileModel = require('./../models/FileModel');
+const GroupModel = require('./../models/GroupModel');
 
 const User     = new UserModel();
 const Exercise = new ExerciseModel();
-const File     = new FileModel();
+const File = new FileModel();
+const Group = new GroupModel();
 
 
 exports.actionIndex = async (req, res) => {
@@ -176,5 +178,14 @@ exports.actionIndexStudent = async (req, res) => {
 
 
 exports.actionIndexAdmin = async(req, res) => {
+    let groups = [];
 
+    groups = await Group.find('all', {
+        join: [
+            ['inner', 'course', 'groups.course_id = course.id']
+        ]
+    });
+    console.log(groups);
+
+    res.send(groups);
 }
