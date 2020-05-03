@@ -8,30 +8,40 @@ const User     = new UserModel();
 const Exercise = new ExerciseModel();
 
 
-exports.actionIndex = async(req, res) => {
+exports.actionIndex = async (req, res) => {
+
+}
+
+
+exports.actionIndexTeacher = async (req, res) => {
+
+}
+
+
+exports.actionIndexStudent = async (req, res) => {
     let
         datesWeek = DateModule.getDatesWeek(),
         exercises = [],
         firstDate = DateModule.formatDbDate(datesWeek.firstDate),
         lastDate  = DateModule.formatDbDate(datesWeek.lastDate);
 
-    console.log(datesWeek);
+    console.log(lastDate, firstDate);
 
     exercises = await Exercise.find('all', {
         // select : [
         //
         // ],
+        sql: true,
         where: [
-            ['date >= ', datesWeek.firtsDate, 'AND'],
-            ['date <= ', datesWeek.lastDate, ''],
+            ['date between', firstDate + ' and ' + lastDate, ''],
         ],
-        join: [
-            [
-                'inner', 'subject', 'subject.id = subject_id',
-                'inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id',
-                'inner', 'user', 'user_has_subject.user_id = user.id'
-            ],
-        ],
+        // join: [
+        //     [
+        //         'inner', 'subject', 'subject.id = subject_id',
+        //         'inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id',
+        //         'inner', 'user', 'user_has_subject.user_id = user.id'
+        //     ],
+        // ],
     });
 
     console.log(exercises);

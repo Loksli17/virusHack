@@ -92,7 +92,10 @@ exports.actionLogin = async (req, res) => {
     req.session.userIndentity = user;
 
     //проверка роли пользователя
-    if (user.role_id == 3){
+    if (user.role_id == 1){
+        res.redirect('/student');
+        return;
+    }if (user.role_id == 3){
         res.redirect('/teacher');
         return;
     }else if (user.role_id == 4){
