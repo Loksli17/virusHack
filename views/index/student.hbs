@@ -20,7 +20,7 @@
     }
 
     .info {
-        background: #ccc;
+        background: #fff;
         padding: 5px;
         visibility: hidden;
     }
@@ -35,6 +35,13 @@
 
     .description {
         padding: 10px 0px;
+    }
+
+    .attached-file {
+        background: #ccc;
+        display: inline-block;
+        padding: 5px 10px;
+        margin: 5px;
     }
 
     progress{
@@ -102,13 +109,14 @@
             <h1 id="exercise-name" class="exercise-name"></h1>
         </div>
         <div class="description"></div>
-            <form class="file-form" action="/file" method="post">
-                <input id="file" type="file" name="" value="">
-                <div class="progress">
-                    <progress style="visibility: hidden" max="100" value="0" id="progress"></progress>
-                </div>
-                <input id="submit" style="visibility: hidden" type="submit" name="" value="Отправить файл">
-            </form>
+        <div id="attached-files" class="attached-files"></div>
+        <form class="file-form" action="/file" method="post">
+            <input id="file" type="file" name="" value="">
+            <div class="progress">
+                <progress style="visibility: hidden" max="100" value="0" id="progress"></progress>
+            </div>
+            <input id="submit" style="visibility: hidden" type="submit" name="" value="Отправить файл">
+        </form>
         <div class="teacher-name"></div>
     </div>
 </div>

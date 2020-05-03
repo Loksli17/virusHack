@@ -75,15 +75,30 @@ window.addEventListener("load", () => {
             // wrapper.appendChild(info);
             let submit = document.getElementById("submit");
             submit.style.visibility = "hidden";
-            let file = document.getElementById("file");
-            file.value = "";
+
+            let fileInput = document.getElementById("file");
+            fileInput.value = "";
+
             let progress = document.getElementById("progress");
             progress.style.visibility = "hidden";
+
             let info = document.getElementsByClassName("info")[0];
+
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
             exerciseName.innerHTML = thisExercise.subTitle;
+
             let description = document.getElementsByClassName("description")[0];
             description.innerHTML = thisExercise.description;
+
+            let attachedFiles = document.getElementById("attached-files");
+            attachedFiles.innerHTML = "";
+            for (let i = 0; i < thisExercise.files.length; i++) {
+                let file = document.createElement("div");
+                file.className = "attached-file"
+                file.innerHTML = thisExercise.files[i];
+                attachedFiles.appendChild(file);
+            }
+
             let teacherName = document.getElementsByClassName("teacher-name")[0];
             teacherName.innerHTML = thisExercise.teacherFirstName[0] + "." + thisExercise.teacherLastName[0] + ". " + thisExercise.teacherPatronyc;
             wrapper.children[wrapper.children.length - 1].style.visibility = "visible";
@@ -91,6 +106,17 @@ window.addEventListener("load", () => {
         }
         if (id == 0 && wrapper.children[wrapper.children.length - 1]) {
             // wrapper.removeChild(wrapper.children[1]);
+            let exerciseName = document.getElementsByClassName("exercise-name")[0];
+            exerciseName.innerHTML = "";
+
+            let description = document.getElementsByClassName("description")[0];
+            description.innerHTML = "";
+
+            let attachedFiles = document.getElementById("attached-files");
+            attachedFiles.innerHTML = "";
+
+            let teacherName = document.getElementsByClassName("teacher-name")[0];
+            teacherName.innerHTML = "";
             wrapper.children[wrapper.children.length - 1].style.visibility = "hidden";
         }
     }
