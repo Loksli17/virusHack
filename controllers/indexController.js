@@ -49,6 +49,6 @@ exports.actionIndexStudent = async (req, res) => {
     res.send(exercises);
 }
 
-exports.actionIndexAdmin = async(req,res){
+exports.actionIndexAdmin = async(req, res) => {
 
 }
