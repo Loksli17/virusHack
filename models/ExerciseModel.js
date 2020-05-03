@@ -7,31 +7,30 @@ function ExerciseModel(){
 }
 
 //наследование
-ExerciseModel.prototype = Object.create(modelMysql.prototype);
-ExerciseModel.prototype.constructor = ExerciseModel;
+ExersiceModel.prototype = Object.create(modelMysql.prototype);
+ExersiceModel.prototype.constructor = ExersiceModel;
 
-ExerciseModel.prototype.rules = {
-    integer : ['group_id',  'subject_id'],
-    date    : ['date'],
-    string  : ['time']
+ExersiceModel.prototype.rules = {
+    integer : ['group_id', 'subject_id'],
+    string  : ['time'],
+    required: ['date', 'time', 'group_id', 'subject_id'],
 };
 
-ExerciseModel.prototype.rulesMesseges = {
+ExersiceModel.prototype.rulesMesseges = {
     string  : 'Поле должно быть строкой',
     integer : 'Поле должно быть числом',
     date    : 'Поле должно иметь формат : DD-MM-YYYY',
     required: 'Данное поле является обязательным',
 }
 
-ExerciseModel.prototype.fields = {
+ExersiceModel.prototype.fields = {
     id        : 'ID',
-    user_id   : 'Пользователь',
-    subject_id: 'Предмет',
+    date      : 'Фамилия',
+    time      : 'Имя',
     group_id  : 'Группа',
-    time      : 'Время',
-    date      : 'Дата'
+    subject_id: 'Роль пользователя',
 }
 
-ExerciseModel.prototype.validateMessege = 'Ошибка отправки формы';
+ExersiceModel.prototype.validateMessege = 'Ошибка отправки формы';
 
-module.exports = ExerciseModel;
+module.exports = ExersiceModel;
