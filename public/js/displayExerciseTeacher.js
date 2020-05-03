@@ -50,6 +50,9 @@ window.addEventListener("load", () => {
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
             exerciseName.innerHTML = thisExercise.subTitle;
 
+            let groupTitle = document.getElementsByClassName("group-title")[0];
+            groupTitle.innerHTML = thisExercise.gtitle + " группа";
+
             let link = document.getElementById("link");
             link.href = thisExercise.link;
 
