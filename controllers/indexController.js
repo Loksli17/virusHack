@@ -37,7 +37,7 @@ exports.actionIndexTeacher = async (req, res) => {
             'user.firstname as teacherFirstName',
             'user.lastname as teacherLastName',
             'user.patronyc as teacherPatronyc',
-            'group.title as gtitle'
+            'groups.title as gtitle'
         ],
         where: [
             ['user.id = ', req.session.userIndentity.id,' AND '],
@@ -45,7 +45,7 @@ exports.actionIndexTeacher = async (req, res) => {
             ['date >= ', firstDate, ''],
         ],
         join: [
-            ['inner', 'group', 'exercise.group_id = group.id'],
+            ['inner', 'groups', 'exercise.group_id = groups.id'],
             ['inner', 'subject', 'subject.id = exercise.subject_id'],
             ['inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id'],
             ['inner', 'user', 'user_has_subject.user_id = user.id'],
