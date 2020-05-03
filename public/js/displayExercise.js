@@ -101,6 +101,10 @@ window.addEventListener("load", () => {
 
             let teacherName = document.getElementsByClassName("teacher-name")[0];
             teacherName.innerHTML = thisExercise.teacherFirstName[0] + "." + thisExercise.teacherLastName[0] + ". " + thisExercise.teacherPatronyc;
+
+            let link = document.getElementsByClassName("link")[0];
+            link.href = thisExercise.link;
+
             wrapper.children[wrapper.children.length - 1].style.visibility = "visible";
 
         }
