@@ -24,11 +24,9 @@ ExerciseModel.prototype.rulesMesseges = {
 }
 
 ExerciseModel.prototype.fields = {
-    id        : 'ID',
-    date      : 'Фамилия',
-    time      : 'Имя',
-    group_id  : 'Группа',
-    subject_id: 'Роль пользователя',
+    id  :'ID',
+    desc: 'Описание',
+    link: 'Сcылка',
 }
 
 ExerciseModel.prototype.validateMessege = 'Ошибка отправки формы';
