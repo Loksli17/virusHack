@@ -25,7 +25,7 @@ exports.actionIndexStudent = async (req, res) => {
         exerView    = [{}, {}, {}, {}, {}, {}],
         firstDate   = DateModule.formatDbDate(datesWeek.firstDate),
         lastDate    = DateModule.formatDbDate(datesWeek.lastDate),
-        // file        =
+        files       =
         currentDate = new Date();
 
 
@@ -35,9 +35,10 @@ exports.actionIndexStudent = async (req, res) => {
             'exercise.date as date',
             'exercise.time as time',
             'exercise.number as number',
-            'exercise.desc as desc',
+            'exercise.desc as description',
             'subject.title as subTitle',
             'subject.id',
+            'user.id as teacherId',
             'user.firstname as teacherFirstName',
             'user.lastname as teacherLastName',
             'user.patronyc as teacherPatronyc',
@@ -79,6 +80,8 @@ exports.actionIndexStudent = async (req, res) => {
         exerView[day - 1].exercises[exercises[i].number - 1].number = exercises[i].number;
         exerView[day - 1].exercises[exercises[i].number - 1].subTitle = exercises[i].subTitle;
         exerView[day - 1].exercises[exercises[i].number - 1].teacher = exercises[i].teacherLastName + exercises[i].teacherFirstName.substr(0, 1) + '. ' + exercises[i].teacherPatronyc.substr(0, 1) + '. ';
+
+
     }
 
     res.render('index/student', {
