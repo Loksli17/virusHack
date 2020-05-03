@@ -22,29 +22,48 @@ exports.actionIndexStudent = async (req, res) => {
     let
         datesWeek = DateModule.getDatesWeek(),
         exercises = [],
+        exerView  = [[], [], [], [], [], []],
         firstDate = DateModule.formatDbDate(datesWeek.firstDate),
         lastDate  = DateModule.formatDbDate(datesWeek.lastDate);
 
     console.log(lastDate, firstDate);
 
     exercises = await Exercise.find('all', {
-        // select : [
-        //
-        // ],
-        sql: true,
-        where: [
-            ['date between', firstDate + ' and ' + lastDate, ''],
+        select : [
+            'exercise.id as id',
+            'exercise.date as date',
+            'exercise.time as time',
+            'subject.title as subTitle',
+            'user.firstname as teacherFirstName',
+            'user.lastname as teacherLastName',
+            'user.patronyc as teacherpatronyc',
         ],
-        // join: [
-        //     [
-        //         'inner', 'subject', 'subject.id = subject_id',
-        //         'inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id',
-        //         'inner', 'user', 'user_has_subject.user_id = user.id'
-        //     ],
-        // ],
+        where: [
+            ['date >= ', firstDate, 'AND'],
+            ['date >= ', firstDate, ''],
+        ],
+        join: [
+            [
+                'inner', 'subject', 'subject.id = subject_id',
+                'inner', 'user_has_subject', 'user_has_subject.subject_id = subject.id',
+                'inner', 'user', 'user_has_subject.user_id = user.id'
+            ],
+        ],
     });
 
-    console.log(exercises);
+    for(let i = 0; i < exerView.length; i++){
+        for(let j = 0; j < 5; j++){
+
+        }
+    }
+
+    for(let i = 0; i < exercises.length; i++){
+        let date = new Date(exercises[i].date);
+        switch(date.getDay()){
+            case 1:
+
+        }
+    }
 
     res.send(exercises);
 }
