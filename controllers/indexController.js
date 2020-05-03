@@ -126,7 +126,7 @@ exports.actionIndexStudent = async (req, res) => {
             ['inner', 'user', 'user_has_subject.user_id = user.id'],
         ],
     });
-
+    console.log(exercises[1], exercises[2]);
 
     for (let i = 0; i < exerView.length; i++) {
         if (currentDate.getDay() - 1 == i) {

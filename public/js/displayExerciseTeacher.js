@@ -24,8 +24,14 @@ window.addEventListener("load", () => {
                 console.log(firstExercise);
             }
         }
-        let id = firstExercise.id;
-        showInfo(id);
+        let id;
+        if (firstExercise) {
+            id = firstExercise.id;
+        }
+
+        if (id) {
+            showInfo(id);
+        }
     }
 
     function showInfo(id) {
@@ -44,8 +50,12 @@ window.addEventListener("load", () => {
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
             exerciseName.innerHTML = thisExercise.subTitle;
 
-            let link = document.getElementsByClassName("link")[0];
+            let link = document.getElementById("link");
             link.href = thisExercise.link;
+
+            let time = document.getElementById("time");
+            console.log(thisExercise.time);
+            time.innerHTML = thisExercise.time;
 
             info.style.visibility = "visible";
 
