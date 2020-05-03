@@ -25,6 +25,7 @@ exports.actionIndexStudent = async (req, res) => {
         exerView    = [{}, {}, {}, {}, {}, {}],
         firstDate   = DateModule.formatDbDate(datesWeek.firstDate),
         lastDate    = DateModule.formatDbDate(datesWeek.lastDate),
+        file        =
         currentDate = new Date();
 
 
@@ -84,6 +85,7 @@ exports.actionIndexStudent = async (req, res) => {
         exercises: exercises,
     });
 }
+
 
 exports.actionIndexAdmin = async(req, res) => {
 
