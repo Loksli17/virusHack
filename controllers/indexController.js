@@ -3,11 +3,11 @@ const DateModule = require('./../lib/date.js');
 
 const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
-const FileModel = require('./../models/FileModel');
+const FileModel     = require('./../models/FileModel');
 
-const User = new UserModel();
+const User     = new UserModel();
 const Exercise = new ExerciseModel();
-const File = new FileModel();
+const File     = new FileModel();
 
 
 exports.actionIndex = async (req, res) => {
@@ -16,7 +16,6 @@ exports.actionIndex = async (req, res) => {
 
 
 exports.actionIndexTeacher = async (req, res) => {
-    console.log(req.session.userIndentity)
     let
         datesWeek   = DateModule.getDatesWeek(),
         exercises   = [],
@@ -24,7 +23,6 @@ exports.actionIndexTeacher = async (req, res) => {
         firstDate   = DateModule.formatDbDate(datesWeek.firstDate),
         lastDate    = DateModule.formatDbDate(datesWeek.lastDate),
         currentDate = new Date();
-
 
     exercises = await Exercise.find('all', {
         select : [
@@ -160,15 +158,14 @@ exports.actionIndexStudent = async (req, res) => {
                 ['exercise_id =', exercises[i].id, ''],
             ]
         });
-        console.log(file, exercises[i].id );
 
         exercises[i].files = [];
+
         for(j = 0; j < files.length; j++){
             exercises[i].files.push(files[j].title);
         }
 
     }
-    console.log(exercises);
 
     res.render('index/student', {
         exerView: exerView,
