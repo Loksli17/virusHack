@@ -73,6 +73,10 @@ window.addEventListener("load", () => {
             // info.appendChild(teacherName);
             // info.style.visibility = "visible";
             // wrapper.appendChild(info);
+            let submit = document.getElementById("submit");
+            submit.style.visibility = "hidden";
+            let file = document.getElementById("file");
+            file.value = "";
             let info = document.getElementsByClassName("info")[0];
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
             exerciseName.innerHTML = thisExercise.subTitle;
