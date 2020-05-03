@@ -11,3 +11,7 @@ const File     = new FileModel();
 exports.actionView = async (req, res) => {
 
 }
+
+exports.actionEdit = async (req, res) => {
+
+}
