@@ -38,6 +38,9 @@ exports.actionLogin = async (req, res) => {
         where: [
             ['email = ', email, ''],
         ],
+        join: [
+            ['inner', 'role', 'user.role_id = role.id']
+        ]
     });
     console.log(email, password);
 
@@ -87,6 +90,16 @@ exports.actionLogin = async (req, res) => {
 
     console.log(`user ${user.name} was authed`);
     req.session.userIndentity = user;
+
+    //проверка роли пользователя
+    if (user.role_id == 3){
+        res.redirect('/teacher');
+        return;
+    }else if (user.role_id == 4){
+        res.redirect('/student');
+        return;
+    }
+
     res.redirect('/');
 };
 
