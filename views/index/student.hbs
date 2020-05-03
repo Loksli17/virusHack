@@ -2,27 +2,61 @@
     .week{
         display: flex;
     }
+
+    .exercise {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .exercise:hover{
+        background: #ccc;
+        cursor: pointer;
+    }
+
+    .info {
+        background: #ccc;
+        padding: 5px;
+    }
+
+    .label {
+        margin-bottom: 0px;
+    }
+
+    .exercise-name {
+        margin: 0px;
+    }
 </style>
 
-<div class="week">
-{{#each exerView}}
-    <div class="day">
-        {{#each this.exercises}}
-        <div class="exercise" id='{{this.id}}'>
-            <div class="number">
-                {{this.number}}
+<div id="wrapper" class="wrapper">
+    <div class="week">
+    {{#each exerView}}
+        <div class="day">
+            {{#each this.exercises}}
+            <div class="exercise" id='{{this.id}}'>
+                <div class="number">
+                    {{this.number}}
+                </div>
+                <div class="sub-title">
+                    {{this.subTitle}}
+                </div>
+                <div class="teacher">
+                    {{this.teacher}}
+                </div>
+                <div class="time">
+                    {{this.time}}
+                </div>
             </div>
-            <div class="sub-title">
-                {{this.subTitle}}
-            </div>
-            <div class="teacher">
-                {{this.teacher}}
-            </div>
-            <div class="time">
-                {{this.time}}
-            </div>
+            {{/each}}
         </div>
-        {{/each}}
+    {{/each}}
     </div>
-{{/each}}
 </div>
+
+
+<script type="text/javascript">
+        let array = {{{exercises}}};
+</script>
+
+<script src="js/displayExercise.js"></script>
