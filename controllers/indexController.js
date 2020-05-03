@@ -1,11 +1,13 @@
 const crypto = require('crypto');
 const DateModule = require('./../lib/date.js');
 
-const UserModel = require('./../models/UserModel');
+const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
+const FileModel = require('./../models/FileModel');
 
 const User = new UserModel();
 const Exercise = new ExerciseModel();
+const File = new FileModel();
 
 
 exports.actionIndex = async (req, res) => {
@@ -95,7 +97,6 @@ exports.actionIndexStudent = async (req, res) => {
         exerView    = [{}, {}, {}, {}, {}, {}],
         firstDate   = DateModule.formatDbDate(datesWeek.firstDate),
         lastDate    = DateModule.formatDbDate(datesWeek.lastDate),
-        files       =
         currentDate = new Date();
 
 
@@ -107,7 +108,7 @@ exports.actionIndexStudent = async (req, res) => {
             'exercise.number as number',
             'exercise.desc as description',
             'subject.title as subTitle',
-            'subject.id',
+            'subject.id as subId',
             'user.id as teacherId',
             'user.firstname as teacherFirstName',
             'user.lastname as teacherLastName',
@@ -124,9 +125,14 @@ exports.actionIndexStudent = async (req, res) => {
         ],
     });
 
+<<<<<<< HEAD
 
     for(let i = 0; i < exerView.length; i++){
         if(currentDate.getDay() - 1 == i){
+=======
+    for (let i = 0; i < exerView.length; i++) {
+        if (currentDate.getDay() - 1 == i) {
+>>>>>>> eb44e91d1cef42b95c528721919ea93ad91c772d
             exerView[i].current = true;
         }
         exerView[i].exercises = [];
@@ -144,7 +150,8 @@ exports.actionIndexStudent = async (req, res) => {
     for (let i = 0; i < exercises.length; i++) {
         let
             date = new Date(exercises[i].date),
-            day = date.getDay();
+            day  = date.getDay(),
+            file = {};
 
         exerView[day - 1].exercises[exercises[i].number - 1].id = exercises[i].id;
         exerView[day - 1].exercises[exercises[i].number - 1].time = exercises[i].time;
@@ -152,8 +159,22 @@ exports.actionIndexStudent = async (req, res) => {
         exerView[day - 1].exercises[exercises[i].number - 1].subTitle = exercises[i].subTitle;
         exerView[day - 1].exercises[exercises[i].number - 1].teacher = exercises[i].teacherLastName + exercises[i].teacherFirstName.substr(0, 1) + '. ' + exercises[i].teacherPatronyc.substr(0, 1) + '. ';
 
+        files = await File.find('all', {
+            select: ['title'],
+            where : [
+                ['user_id = ', exercises[i].teacherId, 'AND'],
+                ['exercise_id =', exercises[i].id, ''],
+            ]
+        });
+        console.log(file, exercises[i].id );
+
+        exercises[i].files = [];
+        for(j = 0; j < files.length; j++){
+            exercises[i].files.push(files[j].title);
+        }
 
     }
+    console.log(exercises);
 
     res.render('index/student', {
         exerView: exerView,
