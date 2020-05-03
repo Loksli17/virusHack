@@ -1,8 +1,8 @@
 const modelMysql = require('../lib/Orm/mysqlOrm');
 
 //model of tasks-mysql
-function ExersiceModel(){
-    tableName = 'exersice';
+function ExerciseModel(){
+    tableName = 'exercise';
     modelMysql.call(this, tableName);
 }
 
