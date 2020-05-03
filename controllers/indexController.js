@@ -8,28 +8,15 @@ const User     = new UserModel();
 const Exercise = new ExerciseModel();
 
 
-<<<<<<< HEAD
 exports.actionIndex = async(req, res) => {
 
     actionIndexStudent();
-=======
-exports.actionIndex = async (req, res) => {
->>>>>>> b8a3ff225d036e92c8850332c000498b9f614516
 
 }
 
 
-exports.actionIndexTeacher = async (req, res) => {
-
-}
-<<<<<<< HEAD
 exports.actionIndexTeacher = async(req, res) => {
 
-=======
-
-
-exports.actionIndexStudent = async (req, res) => {
->>>>>>> b8a3ff225d036e92c8850332c000498b9f614516
     let
         datesWeek = DateModule.getDatesWeek(),
         exercises = [],
@@ -54,7 +41,6 @@ exports.actionIndexStudent = async (req, res) => {
         //     ],
         // ],
     });
-<<<<<<< HEAD
 
     console.log(exercises);
 
@@ -86,19 +72,12 @@ exports.actionIndexStudent = async(req,res) =>{
             ],
         ],
     });
-=======
->>>>>>> b8a3ff225d036e92c8850332c000498b9f614516
 
     console.log(exercises);
 
     res.send(exercises);
 }
 
-<<<<<<< HEAD
 exports.actionIndexAdmin = async(req,res) =>{
     return;
-=======
-exports.actionIndexAdmin = async(req,res){
-
->>>>>>> b8a3ff225d036e92c8850332c000498b9f614516
 }
