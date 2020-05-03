@@ -1,0 +1,72 @@
+:root{
+    --grid-form: 30px;
+}
+
+
+form{
+    display: grid;
+    grid-row-gap: var(--grid-form);
+    width: 100%;
+}
+
+form > label{
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+form .form-elem{
+    display: flex;
+    flex-flow: column;
+    margin-right: var(--grid-form);
+    justify-content: flex-end;
+}
+
+form .form-elem:last-child{
+    margin-left: 0px;
+}
+
+form .form-elem > span{
+    margin-bottom: 15px;
+}
+
+form input, form select{
+    padding: 7px;
+    font-size: 16px;
+    border-radius: 4px;
+    outline: none;
+    border-style: solid;
+    border-color: #c0c0c0;
+}
+
+form input:focus{
+    border-color: #000;
+}
+
+form .form-but{
+    padding: 7px;
+    background: #dedede;
+    border-radius: 4px;
+}
+
+form .form-but:hover{
+    transition: 0.3s;
+    background: #cecece;
+    cursor: pointer;
+}
+
+form input[type="submit"]{
+    border: 0px;
+    background: #a8f280;
+}
+
+.road{
+    display: flex;
+    margin: 20px 0px;
+}
+
+textarea{
+    width: 700px;
+    height: 500px;
+}

@@ -1,5 +1,21 @@
-<form class="" action="/admin/users/{{action}}" method="post">
+<link rel="stylesheet" href="/css/grid-view.css">
+<link rel="stylesheet" href="/css/form.css">
 
+<div class="grid-view">
+    {{#each files}}
+    <div class="view-row">
+        <div class="view-field">
+            {{this.title}}
+        </div>
+        <div class="view-content">
+            <a href="">Удалить</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+
+<form class="" action="/admin/users/{{action}}" method="post">
     <label>
         <div class="form-elem">
             <span>{{fields.email}}</span>

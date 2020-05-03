@@ -1,12 +1,12 @@
 const crypto = require('crypto');
 const DateModule = require('./../lib/date.js');
 
-const UserModel     = require('./../models/UserModel');
+const UserModel = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
 const FileModel = require('./../models/FileModel');
 const GroupModel = require('./../models/GroupModel');
 
-const User     = new UserModel();
+const User = new UserModel();
 const Exercise = new ExerciseModel();
 const File = new FileModel();
 const Group = new GroupModel();
@@ -19,15 +19,15 @@ exports.actionIndex = async (req, res) => {
 
 exports.actionIndexTeacher = async (req, res) => {
     let
-        datesWeek   = DateModule.getDatesWeek(),
-        exercises   = [],
-        exerView    = [{}, {}, {}, {}, {}, {}],
-        firstDate   = DateModule.formatDbDate(datesWeek.firstDate),
-        lastDate    = DateModule.formatDbDate(datesWeek.lastDate),
+        datesWeek = DateModule.getDatesWeek(),
+        exercises = [],
+        exerView = [{}, {}, {}, {}, {}, {}],
+        firstDate = DateModule.formatDbDate(datesWeek.firstDate),
+        lastDate = DateModule.formatDbDate(datesWeek.lastDate),
         currentDate = new Date();
 
     exercises = await Exercise.find('all', {
-        select : [
+        select: [
             'exercise.id as id',
             'exercise.date as date',
             'exercise.time as time',
@@ -41,7 +41,7 @@ exports.actionIndexTeacher = async (req, res) => {
             'group.title as gtitle'
         ],
         where: [
-            ['user.id = ', req.session.userIndentity.id,' AND '],
+            ['user.id = ', req.session.userIndentity.id, ' AND '],
             ['date >= ', firstDate, 'AND'],
             ['date >= ', firstDate, ''],
         ],
@@ -54,50 +54,50 @@ exports.actionIndexTeacher = async (req, res) => {
     });
     console.log(exercises);
 
-    for(let i = 0; i < exerView.length; i++){
-        if(currentDate.getDay() - 1 == i){
+    for (let i = 0; i < exerView.length; i++) {
+        if (currentDate.getDay() - 1 == i) {
             exerView[i].current = true;
         }
         exerView[i].exercises = [];
-        for(let j = 0; j < 5; j++){
+        for (let j = 0; j < 5; j++) {
             exerView[i].exercises.push({
-                id      : 0,
-                time    : '',
+                id: 0,
+                time: '',
                 subTitle: '',
-                teacher : '',
-                number  : '',
-                gtitle  : '',
+                teacher: '',
+                number: '',
+                gtitle: '',
             });
         }
     }
 
-    for(let i = 0; i < exercises.length; i++){
+    for (let i = 0; i < exercises.length; i++) {
         let
             date = new Date(exercises[i].date),
-            day  = date.getDay();
+            day = date.getDay();
 
-        exerView[day - 1].exercises[exercises[i].number - 1].id       = exercises[i].id;
-        exerView[day - 1].exercises[exercises[i].number - 1].time     = exercises[i].time;
-        exerView[day - 1].exercises[exercises[i].number - 1].number   = exercises[i].number;
+        exerView[day - 1].exercises[exercises[i].number - 1].id = exercises[i].id;
+        exerView[day - 1].exercises[exercises[i].number - 1].time = exercises[i].time;
+        exerView[day - 1].exercises[exercises[i].number - 1].number = exercises[i].number;
         exerView[day - 1].exercises[exercises[i].number - 1].subTitle = exercises[i].subTitle;
-        exerView[day - 1].exercises[exercises[i].number - 1].gtitle   = exercises[i].gtitle;
-        exerView[day - 1].exercises[exercises[i].number - 1].teacher  = exercises[i].teacherLastName + exercises[i].teacherFirstName.substr(0, 1) + '. ' + exercises[i].teacherPatronyc.substr(0, 1) + '. ';
+        exerView[day - 1].exercises[exercises[i].number - 1].gtitle = exercises[i].gtitle;
+        exerView[day - 1].exercises[exercises[i].number - 1].teacher = exercises[i].teacherLastName + exercises[i].teacherFirstName.substr(0, 1) + '. ' + exercises[i].teacherPatronyc.substr(0, 1) + '. ';
     }
 
     res.render('index/teacher', {
-        exerView : exerView,
-        exercises: exercises,
+        exerView: exerView,
+        exercises: JSON.stringify(exercises),
     });
 }
 
 
 exports.actionIndexStudent = async (req, res) => {
     let
-        datesWeek   = DateModule.getDatesWeek(),
-        exercises   = [],
-        exerView    = [{}, {}, {}, {}, {}, {}],
-        firstDate   = DateModule.formatDbDate(datesWeek.firstDate),
-        lastDate    = DateModule.formatDbDate(datesWeek.lastDate),
+        datesWeek = DateModule.getDatesWeek(),
+        exercises = [],
+        exerView = [{}, {}, {}, {}, {}, {}],
+        firstDate = DateModule.formatDbDate(datesWeek.firstDate),
+        lastDate = DateModule.formatDbDate(datesWeek.lastDate),
         currentDate = new Date();
 
 
@@ -129,7 +129,7 @@ exports.actionIndexStudent = async (req, res) => {
 
 
     for (let i = 0; i < exerView.length; i++) {
-        if (currentDate.getDay() - 1 == i){
+        if (currentDate.getDay() - 1 == i) {
             exerView[i].current = true;
         }
         exerView[i].exercises = [];
@@ -147,7 +147,7 @@ exports.actionIndexStudent = async (req, res) => {
     for (let i = 0; i < exercises.length; i++) {
         let
             date = new Date(exercises[i].date),
-            day  = date.getDay(),
+            day = date.getDay(),
             file = {};
 
         exerView[day - 1].exercises[exercises[i].number - 1].id = exercises[i].id;
@@ -158,7 +158,7 @@ exports.actionIndexStudent = async (req, res) => {
 
         files = await File.find('all', {
             select: ['title'],
-            where : [
+            where: [
                 ['user_id = ', exercises[i].teacherId, 'AND'],
                 ['exercise_id =', exercises[i].id, ''],
             ]
@@ -166,12 +166,13 @@ exports.actionIndexStudent = async (req, res) => {
 
         exercises[i].files = [];
 
-        for(j = 0; j < files.length; j++){
+        for (j = 0; j < files.length; j++) {
             exercises[i].files.push(files[j].title);
         }
 
     }
 
+    console.log(exerView[1], exercises);
     res.render('index/student', {
         exerView: exerView,
         exercises: JSON.stringify(exercises),
@@ -179,11 +180,11 @@ exports.actionIndexStudent = async (req, res) => {
 }
 
 
-exports.actionIndexAdmin = async(req, res) => {
+exports.actionIndexAdmin = async (req, res) => {
     let groups = [];
 
     groups = await Group.find('all', {
-        select : [
+        select: [
             'group.id',
             'group.title as gtitle',
             'course.title as ctitle',
@@ -195,6 +196,6 @@ exports.actionIndexAdmin = async(req, res) => {
     console.log(groups);
 
     res.render('index/adminGroups', {
-        groups : groups,
+        groups: groups,
     });
 }

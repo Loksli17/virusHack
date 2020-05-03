@@ -1,0 +1,37 @@
+:root{
+    --border: 2px solid var(--add-color);
+}
+
+.grid-view{
+    width: 100%;
+    border: var(--border);
+}
+
+.grid-view > .view-row{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 140px 10fr;
+    border-bottom: var(--border);
+}
+
+.grid-view > .view-row:last-child{
+    border-bottom: 0px solid;
+}
+
+.grid-view .view-field{
+    padding: 10px 15px;
+    box-sizing: border-box;
+    border-right: var(--border);
+}
+
+.grid-view .view-content{
+    padding: 10px 15px;
+}
+
+.grid-view > .view-row:nth-child(even) {
+    background: #dedede;
+}
+
+.grid-view > .view-row:nth-child(odd) {
+    background: #f9f9f9;
+}
