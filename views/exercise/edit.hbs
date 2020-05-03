@@ -1,0 +1,22 @@
+<form class="" action="/admin/users/{{action}}" method="post">
+
+    <label>
+        <div class="form-elem">
+            <span>{{fields.email}}</span>
+            <input type="email" name="user[link]" value="{{formData.link}}" required>
+        </div>
+    </label>
+
+    <label for="">
+        <div class="form-elem">
+            <span>{{fields.phone}}</span>
+            <textarea name="user[desc]">{{formData.desc}}</textarea>
+        </div>
+    </label>
+
+    <label>
+        <div class="">
+            <input type="submit" name="do" value="Отправить">
+        </div>
+    </label>
+</form>
