@@ -1,4 +1,5 @@
-const crypto    = require('crypto');
+const crypto     = require('crypto');
+const DateModule = require('./../lib/date.js');
 
 const UserModel = require('./../models/UserModel');
 
@@ -11,8 +12,7 @@ exports.actionIndex = async (req, res) => {
         ],
     });
 
-    date = new Date();
-    console.log(date.getDay())
+    let dates = DateModule.getDatesWeek();
 
     res.send(users);
 }
