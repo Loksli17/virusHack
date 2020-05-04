@@ -26,5 +26,6 @@ exports.actionIndex = async (req, res) => {
 
     console.log(counExercise);
 
-    res.send(counExercise);
+    // res.send(counExercise);
+    res.render ('stat/index');
 }
