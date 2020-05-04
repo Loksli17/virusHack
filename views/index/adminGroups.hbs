@@ -1,5 +1,18 @@
-{{#each groups}}
-    курс : {{this.ctitle}}
-    группа  : {{this.gtitle}}
-    <br>
-{{/each}}
+<select class="" name="">
+    <option value="" selected disabled>Выберете курс</option>
+    {{#each courses}}
+        <option value="{{this.id}}">{{this.title}}</option>
+    {{/each}}
+</select>
+
+<div class="">
+    {{#each groups}}
+        <div class="group">
+            <div class="course-id">
+                {{this.cid}}
+            </div>
+            курс  : {{this.ctitle}}
+            группа: {{this.gtitle}}
+        </div>
+    {{/each}}
+</div>
