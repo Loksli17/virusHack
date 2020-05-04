@@ -10,7 +10,7 @@
 .grid-view > .view-row{
     width: 100%;
     display: grid;
-    grid-template-columns: 140px 10fr;
+    grid-template-columns: 5fr 1fr;
     border-bottom: var(--border);
 }
 

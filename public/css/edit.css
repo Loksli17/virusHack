@@ -1,0 +1,21 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.page-wrap{
+    width: 100%;
+    display: grid;
+    grid-template-columns: max-content auto;
+    padding: 20px 50px;
+    grid-column-gap: 50px;
+    box-sizing: border-box;
+}
+
+.file-form{
+    margin-top: 50px;
+}
+
+input[type="file"]{
+    border: 0px;
+}

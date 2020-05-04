@@ -56,8 +56,13 @@ window.addEventListener("load", () => {
             let link = document.getElementById("link");
             link.href = thisExercise.link;
 
+            let setup = document.getElementById("setup");
+            setup.href = "/exercise/edit?id=" + id;
+
+            let goto = document.getElementById("goto");
+            goto.href = "/exercise/view?id=" + id;
+
             let time = document.getElementById("time");
-            console.log(thisExercise.time);
             time.innerHTML = thisExercise.time;
 
             info.style.visibility = "visible";
