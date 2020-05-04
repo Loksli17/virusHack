@@ -1,7 +1,15 @@
-.no-student {
+.presence-no {
     color: red;
 }
 
-.yes-student {
+.presence-yes {
+    color: green;
+}
+
+.pass-no {
+    color: red;
+}
+
+.pass-yes {
     color: green;
 }

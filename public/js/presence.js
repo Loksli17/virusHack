@@ -2,17 +2,17 @@ window.addEventListener("load", () => {
 
     let aArr = document.querySelectorAll('.presence');
     for(let i = 0; i < aArr.length; i++){
-        aArr[i].addEventListener('click', persence, false);
+        aArr[i].addEventListener('click', presence, false);
     }
 }, true);
 
-function persence(e){
-    console.log('persence');
+function presence(e){
+    console.log('presence');
     e.stopPropagation();
     e.preventDefault();
 
-    let element = this;
-    console.log(element);
+    let presence = this.children[0];
+    console.log(presence);
 
     let
         formData = new FormData(),
@@ -21,10 +21,10 @@ function persence(e){
     ajax.onload = ajax.onerror = function() {
         console.log(this.status);
 
-        if (element.className = "presence-no") {
-            element.className = "presence-yes"
-        } else if (element.className = "presence-yes") {
-            element.className = "presence-no"
+        if (presence.className == "presence-yes") {
+            presence.className = "presence-no";
+        } else if (presence.className == "presence-no") {
+            presence.className = "presence-yes";
         }
 
         if (this.status == 200) {
