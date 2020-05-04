@@ -26,7 +26,7 @@ let myChart = new Chart(ctx, {
 		            yAxes: [{
 		                ticks: {
 		                    beginAtZero: true,
-                    		suggestedMax: 20,
+                    		suggestedMax: 12,
 		                }
 		            }]
 		        }
@@ -54,7 +54,7 @@ let myChart1 = new Chart(ctx1, {
 		            yAxes: [{
 		                ticks: {
 							beginAtZero: true,
-						   suggestedMax: 20,
+						   suggestedMax: 12,
 		                }
 		            }]
 		        }
