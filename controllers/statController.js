@@ -75,5 +75,6 @@ exports.actionIndex = async (req, res) => {
         counterPres = 0;
     }
 
-    res.send({students: students});
+    // res.send(counExercise);
+    res.render ('stat/index');
 }
