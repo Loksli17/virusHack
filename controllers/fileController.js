@@ -66,8 +66,8 @@ exports.actionFileDelete = (req, res) => {
     }
 
     const
-        GET = req.query;
+        GET  = req.query;
 
-    console.log(GET.filename);
+    console.log(GET.filename, GET.path);
     res.send();
 }
