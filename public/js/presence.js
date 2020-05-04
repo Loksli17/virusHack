@@ -2,12 +2,7 @@ window.addEventListener("load", () => {
 
     let aArr = document.querySelectorAll('.presence');
     for(let i = 0; i < aArr.length; i++){
-<<<<<<< HEAD:public/js/persence.js
         aArr[i].addEventListener('click', persence, false);
-=======
-        // console.log(aArr[i]);
-        aArr[i].addEventListener('click', server, false);
->>>>>>> f168a0597b0b3b0a5d3bec5cb25e6b44b57c5e04:public/js/presence.js
     }
 }, true);
 
