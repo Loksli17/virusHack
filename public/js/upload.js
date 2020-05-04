@@ -5,7 +5,7 @@ window.addEventListener("load", () => {
     let file = document.getElementById("file");
     file.addEventListener("change", () => {
         let submit = document.getElementById("submit");
-        submit.style.display = "inline-block";
+        submit.style.display = "visible";
     }, true);
 }, true);
 
@@ -23,7 +23,7 @@ function upload(e) {
     ajax.upload.onprogress = (e) => {
         let percent = e.loaded / e.total;
         console.log(e.loaded, e.total);
-        progress.style.display = "block";
+        progress.style.display = "visible";
         progress.setAttribute('max', event.total);
         progress.value = event.loaded;
     }
@@ -62,7 +62,7 @@ function upload(e) {
 
     formData.append('file', file);
     formData.append('idExercise', id);
-    ajax.open("POST", "/file");
+    ajax.open("POST", "/file/student");
     ajax.setRequestHeader('Accept', 'application/json, text/javascript, */*, q=0.01');
     ajax.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     ajax.send(formData);

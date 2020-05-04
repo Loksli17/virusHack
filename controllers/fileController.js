@@ -71,7 +71,7 @@ exports.actionFileDelete = async (req, res) => {
         GET  = req.query;
 
     console.log(GET.filename, GET.path);
-    await fs.unlinkSync('./public/file'+GET.path+'/'+GET.filename);
+   await fs.unlinkSync('./public/file'+GET.path+'/'+GET.filename);
     await File.remove({
         where :[
             ['title= ',GET.filename,'']
