@@ -30,6 +30,29 @@ function upload(e) {
 
     ajax.onload = ajax.onerror = function() {
         console.log(this.status);
+
+        let newRow = document.createElement("div");
+        newRow.className = "view-row";
+        console.log(file);
+        let viewField = document.createElement("div");
+        viewField.className = "view-field";
+        viewField.innerHTML = file.name;
+        let viewContent = document.createElement("div");
+        viewContent.className = "view-content";
+        let fileDel = document.createElement("a");
+        fileDel.className = "file-del";
+        fileDel.href = "/file/delete?filename=" + file.name + "&path=/teacher";
+        fileDel.innerHTML = "Удалить";
+        let fa = document.createElement("i");
+        fa.className = "fa fa-spinner fa-spin";
+        viewContent.appendChild(fileDel);
+        viewContent.appendChild(fa);
+        newRow.appendChild(viewField);
+        newRow.appendChild(viewContent);
+
+        let filesField = document.getElementById("files-field");
+        filesField.appendChild(newRow);
+
         if (this.status == 200) {
 
         } else {

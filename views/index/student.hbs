@@ -52,6 +52,54 @@
         padding: 5px 10px;
         margin: 5px;
     }
+
+    .files-field {
+        width: 100%;
+        border: var(--border);
+    }
+
+    .files-field>.view-row {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+        border-bottom: var(--border);
+    }
+
+    .files-field>.view-row:last-child {
+        border-bottom: 0px solid;
+    }
+
+    .files-field .view-field {
+        padding: 10px 15px;
+        box-sizing: border-box;
+        border-right: var(--border);
+    }
+
+    .files-field .view-content {
+        padding: 10px 15px;
+    }
+
+    .files-field>.view-row:nth-child(even) {
+        background: #dedede;
+    }
+
+    .files-field>.view-row:nth-child(odd) {
+        background: #f9f9f9;
+    }
+
+    .second-col {
+        margin-top: 40px;
+    }
+
+    .view-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 20px;
+    }
+
+    .view-content i {
+        display: none;
+    }
 </style>
 
 <link rel="stylesheet" href="/css/progress.css">
@@ -93,6 +141,9 @@
         <div id="attached-files" class="attached-files"></div>
 
         <form class="file-form" action="/file" method="post">
+            <div id="files-field" class="files-field">
+
+            </div>
             <input id="file" type="file" name="" value="">
             <div class="progress">
                 <progress max="100" value="0" id="progress"></progress>

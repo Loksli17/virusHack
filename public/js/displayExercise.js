@@ -84,6 +84,30 @@ window.addEventListener("load", () => {
             // info.appendChild(teacherName);
             // info.style.visibility = "visible";
             // wrapper.appendChild(info);
+            let filesField = document.getElementById("files-field");
+            filesField.innerHTML = "";
+            thisExercise.filesStudent.forEach((file) => {
+                let newRow = document.createElement("div");
+                newRow.className = "view-row";
+                let viewField = document.createElement("div");
+                viewField.className = "view-field";
+                viewField.innerHTML = file;
+                let viewContent = document.createElement("div");
+                viewContent.className = "view-content";
+                let fileDel = document.createElement("a");
+                fileDel.className = "file-del";
+                fileDel.href = "/file/delete?filename=" + file + "&path=/teacher";
+                fileDel.innerHTML = "Удалить";
+                let fa = document.createElement("i");
+                fa.className = "fa fa-spinner fa-spin";
+                viewContent.appendChild(fileDel);
+                viewContent.appendChild(fa);
+                newRow.appendChild(viewField);
+                newRow.appendChild(viewContent);
+                filesField.appendChild(newRow);
+            });
+
+
             let submit = document.getElementById("submit");
             submit.style.display = "none";
 
@@ -122,6 +146,8 @@ window.addEventListener("load", () => {
         if (id == 0 && wrapper.children[wrapper.children.length - 1]) {
             // wrapper.removeChild(wrapper.children[1]);
             let info = document.getElementsByClassName("info")[0];
+            let filesField = document.getElementById("files-field");
+            filesField.innerHTML = "";
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
             exerciseName.innerHTML = "";
 
