@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
     let aArr = document.querySelectorAll('.pass');
     for(let i = 0; i < aArr.length; i++){
+        console.log(aArr[i]);
         aArr[i].addEventListener('click', server, false);
     }
 }, true);
@@ -8,6 +9,7 @@ window.addEventListener("load", () => {
 function server(e){
     e.stopPropagation();
     e.preventDefault();
+    console.log(this);
 
     let
         formData = new FormData(),
