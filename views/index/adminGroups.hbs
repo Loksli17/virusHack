@@ -19,13 +19,13 @@
 
 <div class="">
     {{#each groups}}
-        <div class="group">
+        <a class="group" href="/stat?id={{this.id}}">
             <div class="course-id">
                 {{this.cid}}
             </div>
             курс  : {{this.ctitle}}
             группа: {{this.gtitle}}
-        </div>
+        </a>
     {{/each}}
 </div>
 

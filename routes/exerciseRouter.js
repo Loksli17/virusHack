@@ -24,5 +24,7 @@ const upload = multer({storage: storageConfig});
 const exerciseRouter = express.Router();
 exerciseRouter.all('/view', exerciseController.actionView);
 exerciseRouter.all('/edit', exerciseController.actionEdit);
+exerciseRouter.all('/pass', exerciseController.actionPass);
+exerciseRouter.all('/persence', exerciseController.actionPresence);
 
 module.exports = exerciseRouter;
