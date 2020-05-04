@@ -1,0 +1,110 @@
+.wrapper .mainContent .content .lessonAbout .lessonPanel .contactTeacher, .wrapper .mainContent .content .lessonAbout .lessonPanel .joinLesson, .wrapper .mainContent .content .lessonAbout .lessonAboutInfo .descriptionPanel .attached a {
+  text-decoration: none;
+  color: black;
+  padding: 3px 30px;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+  background: #4E53DF;
+  color: #FFFFFF;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  font-family: Nunito, Comfortaa, "Open Sans", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+}
+.wrapper .menu {
+  background: linear-gradient(150deg, #6E73FF, #4E53DF);
+  width: 200px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+.wrapper .menu .menuHeader {
+  display: flex;
+  flex-flow: row nowrap;
+  background: none;
+  justify-content: space-around;
+  align-items: center;
+  margin: 25px 10px 50px 10px;
+  color: #FFFFFF;
+}
+.wrapper .menu .menuHeader img {
+  width: 20%;
+}
+.wrapper .menu .menuContent a {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 8px 0px 8px 12px;
+}
+.wrapper .menu .menuContent a img {
+  width: 35px;
+  padding-right: 5px;
+}
+.wrapper .menu .menuContent a:hover {
+  background: #4E53DF;
+}
+.wrapper .menu .menuFooter:before {
+  display: block;
+  content: "";
+  width: 80%;
+  height: 2px;
+  background: #5340C7;
+  margin-bottom: 20px;
+}
+.wrapper .menu .menuFooter {
+  position: absolute;
+  width: inherit;
+  bottom: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  color: white;
+}
+.wrapper .menu .menuFooter img {
+  width: 30px;
+  height: 30px;
+}
+.wrapper .menu .menuFooter .social {
+  padding-bottom: 12px;
+}
+.wrapper .menu .menuFooter .social img {
+  margin: 0px 5px;
+}
+.wrapper .menu .menuFooter .contacts {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+.wrapper .menu .menuFooter .contacts .phone, .wrapper .menu .menuFooter .contacts .mail {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 3px 0px;
+}
+.wrapper .menu .menuFooter .contacts .phone img, .wrapper .menu .menuFooter .contacts .mail img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+.wrapper .menu .menuFooter .contacts .mail {
+  font-size: 18px;
+}
+.wrapper .menu .menuFooter .author {
+  padding-top: 15px;
+  font-size: 12px;
+}
