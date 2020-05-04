@@ -175,16 +175,16 @@ input:focus{
 
 @-webkit-keyframes autofill {
   to {
-    color: #ccc;
-    background: transparent;
-    font-size: 18px;
+      color: #ccc;
+      background: transparent;
+      font-size: 18px;
   }
 }
 
 input:-webkit-autofill {
-  -webkit-animation-name: autofill;
-  -webkit-animation-fill-mode: both;
-  font-size: 18px;
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+    font-size: 18px;
 }
 
 .line{

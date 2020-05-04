@@ -22,7 +22,11 @@ exports.actionIndex = async (req, res) => {
         counterPres   = 0,
         labels        = [],
         presArr       = [],
+        group         = {},
         passArr       = [];
+
+
+    group = await Group.findById(id);
 
     counExercise = await Exercise.find('all', {
         where: [
@@ -77,5 +81,6 @@ exports.actionIndex = async (req, res) => {
         labels : JSON.stringify(labels),
         passArr: JSON.stringify(passArr),
         presArr: JSON.stringify(presArr),
+        group  : group, 
     });
 }

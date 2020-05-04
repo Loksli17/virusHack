@@ -1,34 +1,26 @@
-.wrapper .mainContent .content .lessonAbout .lessonPanel .contactTeacher, .wrapper .mainContent .content .lessonAbout .lessonPanel .joinLesson, .wrapper .mainContent .content .lessonAbout .lessonAboutInfo .descriptionPanel .attached a {
-  text-decoration: none;
-  color: black;
-  padding: 3px 30px;
-  margin: 5px;
-  border-radius: 5px;
-  text-align: center;
-  background: #4E53DF;
-  color: #FFFFFF;
-}
-
 * {
   padding: 0px;
   margin: 0px;
   font-family: Nunito, Comfortaa, "Open Sans", sans-serif;
 }
 
-li {
-  list-style: none;
+.wrapper{
+    display: grid;
+    grid-template-columns: 220px auto;
+    position: relative;
+    grid-column-gap: 50px;
 }
 
-.wrapper {
-  display: flex;
-  flex-flow: row nowrap;
-  position: relative;
+.menu li{
+  list-style: none;
+  width: 100%;
 }
+
 .wrapper .menu {
   background: linear-gradient(150deg, #6E73FF, #4E53DF);
-  width: 200px;
   display: flex;
   flex-flow: column nowrap;
+  height: 100vh;
 }
 .wrapper .menu .menuHeader {
   display: flex;
@@ -67,7 +59,7 @@ li {
 }
 .wrapper .menu .menuFooter {
   position: absolute;
-  width: inherit;
+  width: 220px;
   bottom: 10px;
   display: flex;
   flex-flow: column nowrap;
@@ -107,4 +99,76 @@ li {
 .wrapper .menu .menuFooter .author {
   padding-top: 15px;
   font-size: 12px;
+}
+
+
+
+
+
+
+.wrapper .mainContent .header {
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+.wrapper .mainContent .header .userPanel {
+  height: 70px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 100;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.34);
+  position: fixed;
+  width: calc(100% - 220px);
+  left: 220px;
+  background: #fff;
+}
+.wrapper .mainContent .header .userPanel > a > img {
+  width: 30px;
+  height: 30px;
+  padding-top: 5px;
+  margin: 0px 20px;
+}
+.wrapper .mainContent .header .userPanel .userID {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  color: #CCCCCC;
+  margin-left: 30px;
+}
+.wrapper .mainContent .header .userPanel .userID span {
+  position: relative;
+}
+.wrapper .mainContent .header .userPanel .userID span:before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -50px;
+  width: 50px;
+  height: 2px;
+  background: #CCCCCC;
+  transform: rotate(90deg);
+}
+.wrapper .mainContent .header .userPanel .userID img {
+  width: 50px;
+  height: 50px;
+  border-radius: 40px;
+  border: 3px solid #5340C7;
+  margin: 0px 10px;
+}
+
+#logout{
+    width: 25px;
+    height: 25px;
+}
+
+body{
+    background: #F8F9FC;
+}
+
+.content{
+    margin-top: 90px;
+
 }

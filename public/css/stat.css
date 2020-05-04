@@ -1,0 +1,51 @@
+.big-wrap{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.wrap{
+    padding: 20px;
+    box-sizing: border-box;
+    width: 700px;
+    background: #fff;
+    box-shadow: 0px 2px 8px -1px #ccc;
+}
+
+h1{
+    font-family: nunito;
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.group{
+    display: grid;
+    grid-template-columns: max-content auto;
+    flex-flow: row;
+    padding: 20px;
+    width: 92.5%;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+    background: #fff;
+    box-shadow: 0px 2px 8px -1px #ccc;
+    align-items: center;
+    grid-column-gap: 20px;
+}
+
+.group > div{
+    display: flex;
+}
+
+img{
+    width: 40px;
+}
+
+h2{
+    font-family: nunito;
+    font-size: 24px;
+    font-weight: 200;
+}
+
+h2:last-child{
+    margin-left: 10px;
+}

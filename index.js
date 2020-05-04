@@ -44,7 +44,7 @@ app.use(function(req, res, next){
     if(req.session.userIndentity != undefined){
         res.locals.user = req.session.userIndentity;
     }
-    // res.locals._csrfToken = req.csrfToken();
+    console.log(res.locals.user);
     next();
 });
 
