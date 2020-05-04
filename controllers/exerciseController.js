@@ -15,6 +15,7 @@ const Control  = new ControlModel();
 
 exports.actionPresence = async (req, res) => {
     let control = {};
+    
     if(!req.xhr){
         res.render('server/error', {
             layout : null,
@@ -26,26 +27,28 @@ exports.actionPresence = async (req, res) => {
 
     const
         GET  = req.query;
-    control = await Control.find({
-        select : [
-            'id'
-        ],
-        where : [
-            ['user_id = ', GET.idUser, 'AND'],
-            ['exercise_id = ', GET.idExercise,'']
-        ]
-    })
 
-    if (GET.presence == 1){
-        await Control.save(
-            {
-                
-            }
-            ,control.id)
-    }else{
-
-    }
-
+    console.log(GET);
+    // control = await Control.find({
+    //     select : [
+    //         'id'
+    //     ],
+    //     where : [
+    //         ['user_id = ', GET.idUser, 'AND'],
+    //         ['exercise_id = ', GET.idExercise,'']
+    //     ]
+    // })
+    //
+    // if (GET.presence == 1){
+    //     await Control.save(
+    //         {
+    //
+    //         }
+    //         ,control.id)
+    // }else{
+    //
+    // }
+    res.send();
 }
 
 exports.actionPass = async (req, res) => {
@@ -105,14 +108,13 @@ exports.actionView = async (req, res) => {
 
     for(let i = 0; i < users.length; i++){
         users[i].num = i + 1;
-        users[i].idExer = id;
     }
 
     group = users[0].gtitle;
 
     res.render('exercise/view', {
-        users : users,
-        group : group,
+        users: users,
+        group: group,
     })
 
 }
