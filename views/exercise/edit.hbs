@@ -1,38 +1,56 @@
+<link rel="stylesheet" href="/css/edit.css">
 <link rel="stylesheet" href="/css/grid-view.css">
 <link rel="stylesheet" href="/css/form.css">
+<link rel="stylesheet" href="/css/progress.css">
 
-<div class="grid-view">
-    {{#each files}}
-    <div class="view-row">
-        <div class="view-field">
-            {{this.title}}
-        </div>
-        <div class="view-content">
-            <a href="">Удалить</a>
-        </div>
+<div class="page-wrap">
+    <div class="page-col">
+        <form class="" action="/exercise/{{action}}" method="post">
+            <label>
+                <div class="form-elem">
+                    <span>{{fields.link}}</span>
+                    <input type="text" name="exercise[link]" value="{{formData.link}}" required>
+                </div>
+            </label>
+
+            <label for="">
+                <div class="form-elem">
+                    <span>{{fields.desc}}</span>
+                    <textarea name="exercise[desc]">{{formData.desc}}</textarea>
+                </div>
+            </label>
+
+            <label>
+                <div class="">
+                    <input type="submit" name="do" value="Отправить">
+                </div>
+            </label>
+        </form>
     </div>
-    {{/each}}
+    <div class="">
+        <div class="grid-view">
+            {{#each files}}
+            <div class="view-row">
+                <div class="view-field">
+                    {{this.title}}
+                </div>
+                <div class="view-content">
+                    <a href="">Удалить</a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <form class="file-form" action="/file" method="post">
+            <input id="file" type="file" name="" value="">
+            <div class="progress">
+                <progress style="visibility: hidden" max="100" value="0" id="progress"></progress>
+            </div>
+            <input id="submit" style="visibility: hidden" type="submit" name="" value="Отправить файл">
+        </form>
+    </div>
 </div>
 
-
-<form class="" action="/exercise/{{action}}" method="post">
-    <label>
-        <div class="form-elem">
-            <span>{{fields.email}}</span>
-            <input type="text" name="exercise[link]" value="{{formData.link}}" required>
-        </div>
-    </label>
-
-    <label for="">
-        <div class="form-elem">
-            <span>{{fields.phone}}</span>
-            <textarea name="exercise[desc]">{{formData.desc}}</textarea>
-        </div>
-    </label>
-
-    <label>
-        <div class="">
-            <input type="submit" name="do" value="Отправить">
-        </div>
-    </label>
-</form>
+<script type="text/javascript">
+    var id = {{{exerciseId}}};
+</script>
+<script src="/js/teacherUpload.js"></script>

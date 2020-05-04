@@ -5,7 +5,7 @@ const config  = require('./../config');
 
 const fileController = require('../controllers/fileController');
 
-const storageConfig = multer.diskStorage({
+const storageConfigStudent = multer.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'public/file/student');
     },
@@ -19,9 +19,25 @@ const storageConfig = multer.diskStorage({
         cb(null, name + '.' +  type[1].toUpperCase());
     }
 });
-const upload = multer({storage: storageConfig});
+
+const storageConfigTeacher = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'public/file/teacher');
+    },
+    filename: (req, file, cb) => {
+        let type = file.mimetype.split('/');
+        console.log(file);
+        cb(null, file.originalname + '.' +  type[1].toUpperCase());
+    }
+});
+
+
+const uploadStudent = multer({storage: storageConfigStudent});
+const uploadTeacher = multer({storage: storageConfigTeacher});
+
 
 const fileRouter = express.Router();
-fileRouter.all('/', upload.single('file'), fileController.actionFileUpload);
+fileRouter.all('/',        uploadStudent.single('file'), fileController.actionFileUpload);
+fileRouter.all('/teacher', uploadTeacher.single('file'), fileController.actionFileUpload);
 
 module.exports = fileRouter;

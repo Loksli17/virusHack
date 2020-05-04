@@ -98,14 +98,14 @@ exports.actionEdit = async (req, res) => {
         });
         return;
     }
-    console.log(files);
 
     if(POST.do == undefined){
         res.render('exercise/edit', {
-            action  : 'edit?id=' + id,
-            fields  : exercise.fields,
-            formData: exercise,
-            files   : files,
+            action    : 'edit?id=' + id,
+            fields    : exercise.fields,
+            formData  : exercise,
+            files     : files,
+            exerciseId: id,
         });
         return;
     }
@@ -115,17 +115,16 @@ exports.actionEdit = async (req, res) => {
     exercise.link = exerciseForm.link;
     exercise.desc = exerciseForm.desc;
 
-    console.log(exerciseForm, exercise);
-
     let save = Exercise.save(exercise, exercise.id);
     if(save){
         res.redirect('/teacher');
     }else{
         res.render('server/error.hbs', {
-            action  : 'edit?id=' + id,
-            fields  : exercise.fields,
-            formData: exercise,
-            files   : files,
+            action    : 'edit?id=' + id,
+            fields    : exercise.fields,
+            formData  : exercise,
+            files     : files,
+            exerciseId: id,
         });
     }
 }
