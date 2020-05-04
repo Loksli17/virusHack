@@ -1,51 +1,51 @@
-:root{
+:root {
     --border: 2px solid var(--add-color);
 }
 
-.grid-view{
+.grid-view {
     width: 100%;
     border: var(--border);
 }
 
-.grid-view > .view-row{
+.grid-view>.view-row {
     width: 100%;
     display: grid;
     grid-template-columns: 5fr 1fr;
     border-bottom: var(--border);
 }
 
-.grid-view > .view-row:last-child{
+.grid-view>.view-row:last-child {
     border-bottom: 0px solid;
 }
 
-.grid-view .view-field{
+.grid-view .view-field {
     padding: 10px 15px;
     box-sizing: border-box;
     border-right: var(--border);
 }
 
-.grid-view .view-content{
+.grid-view .view-content {
     padding: 10px 15px;
 }
 
-.grid-view > .view-row:nth-child(even) {
+.grid-view>.view-row:nth-child(even) {
     background: #dedede;
 }
 
-.grid-view > .view-row:nth-child(odd) {
+.grid-view>.view-row:nth-child(odd) {
     background: #f9f9f9;
 }
 
-.second-col{
+.second-col {
     margin-top: 40px;
 }
 
-.view-content{
+.view-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 20px;
 }
 
-.view-content i{
+.view-content i {
     display: none;
 }

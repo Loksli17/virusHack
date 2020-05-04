@@ -1,7 +1,7 @@
 window.addEventListener("load", () => {
     let aArr = document.querySelectorAll('.file-del');
 
-    for(let i = 0; i < aArr.length; i++){
+    for (let i = 0; i < aArr.length; i++) {
         console.log(aArr[i]);
         aArr[i].addEventListener('click', deleteFile, false);
     }
@@ -9,11 +9,12 @@ window.addEventListener("load", () => {
 }, true);
 
 
-function deleteFile(e){
+function deleteFile(e) {
     e.stopPropagation();
     e.preventDefault();
-
     console.log(this.href);
+    let element = this;
+    console.log(element);
 
     let
         formData = new FormData(),
@@ -21,10 +22,22 @@ function deleteFile(e){
 
     ajax.upload.onprogress = (e) => {
         // здесь активировать тег i
+        let parent = element.parentNode;
+        console.log(element);
+        let i = parent.lastElementChild;
+        console.log(i);
+        // i.setAttribute('aria-hidden', 'false');
+        i.style.display = "inherit";
+        console.log("1");
     }
 
     ajax.onload = ajax.onerror = function() {
         //здесь закрыть тег i
+        let parent = element.parentNode;
+        let i = parent.lastElementChild;
+        console.log(2);
+        // i.style.display = "none";
+
         console.log(this.status);
         if (this.status == 200) {
 
