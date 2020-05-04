@@ -3,9 +3,12 @@
 <link rel="stylesheet" href="/css/form.css">
 <link rel="stylesheet" href="/css/progress.css">
 
+
+
 <div class="page-wrap">
     <div class="page-col">
-        <form class="" action="/exercise/{{action}}" method="post">
+        <h2>Настройка занятия</h2>
+        <form class="edit-form" action="/exercise/{{action}}" method="post">
             <label>
                 <div class="form-elem">
                     <span>{{fields.link}}</span>
@@ -27,7 +30,7 @@
             </label>
         </form>
     </div>
-    <div class="">
+    <div class="page-col second-col">
         <div class="grid-view">
             {{#each files}}
             <div class="view-row">
@@ -35,12 +38,14 @@
                     {{this.title}}
                 </div>
                 <div class="view-content">
-                    <a href="">Удалить</a>
+                    <a class="file-del" href="/file/delete?filename={{this.title}}">Удалить</a>
+                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                 </div>
             </div>
             {{/each}}
         </div>
         <form class="file-form" action="/file" method="post">
+            <span>Добавить новый файл</span>
             <input id="file" type="file" name="" value="">
             <div class="progress">
                 <progress style="visibility: hidden" max="100" value="0" id="progress"></progress>
@@ -54,3 +59,4 @@
     var id = {{{exerciseId}}};
 </script>
 <script src="/js/teacherUpload.js"></script>
+<script src="/js/deleteFile.js"></script>

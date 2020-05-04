@@ -53,3 +53,21 @@ exports.actionFileUpload = (req, res) => {
         res.send();
     }
 }
+
+
+exports.actionFileDelete = (req, res) => {
+    if(!req.xhr){
+        res.render('server/error', {
+            layout : null,
+            err    : 500,
+            messege: "Iternal Server Error",
+        });
+        return;
+    }
+
+    const
+        GET = req.query;
+
+    console.log(GET.filename);
+    res.send();
+}
