@@ -5,11 +5,13 @@ const UserModel = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
 const FileModel = require('./../models/FileModel');
 const GroupModel = require('./../models/GroupModel');
+const CourseModel = require('./../models/CourseModel');
 
 const User = new UserModel();
 const Exercise = new ExerciseModel();
 const File = new FileModel();
 const Group = new GroupModel();
+const Course = new CourseModel();
 
 
 exports.actionIndex = async (req, res) => {
@@ -177,21 +179,28 @@ exports.actionIndexStudent = async (req, res) => {
 
 
 exports.actionIndexAdmin = async (req, res) => {
-    let groups = [];
+    let
+        groups  = [],
+        courses = [];
 
     groups = await Group.find('all', {
         select: [
             'group.id',
             'group.title as gtitle',
             'course.title as ctitle',
+            'course.id as cid',
         ],
         join: [
             ['inner', 'course', 'group.course_id = course.id']
         ]
     });
-    console.log(groups);
+
+    courses = await Course.find('all', {
+        select: ['id', 'title'],
+    });
 
     res.render('index/adminGroups', {
-        groups: groups,
+        groups : groups,
+        courses: courses,
     });
 }
