@@ -36,7 +36,7 @@ window.addEventListener("load", () => {
 
     function showInfo(id) {
         console.log(id);
-        let wrapper = document.getElementById("wrapper");
+        let wrapper = document.getElementsByClassName("wrapper")[0];
         if (id != 0) {
             let thisExercise;
             array.forEach((e) => {
@@ -65,14 +65,15 @@ window.addEventListener("load", () => {
             let time = document.getElementById("time");
             time.innerHTML = thisExercise.time;
 
-            info.style.visibility = "visible";
+            info.style.display = "block";
 
         }
-        if (id == 0 && wrapper.children[wrapper.children.length - 1]) {
+        if (id == 0 && wrapper.lastElementChild) {
+            let info = document.getElementsByClassName("info")[0];
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
             exerciseName.innerHTML = "";
 
-            info.style.visibility = "hidden";
+            info.style.display = "none";
         }
     }
 }, true);

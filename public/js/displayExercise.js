@@ -85,13 +85,13 @@ window.addEventListener("load", () => {
             // info.style.visibility = "visible";
             // wrapper.appendChild(info);
             let submit = document.getElementById("submit");
-            submit.style.visibility = "hidden";
+            submit.style.display = "none";
 
             let fileInput = document.getElementById("file");
             fileInput.value = "";
 
             let progress = document.getElementById("progress");
-            progress.style.visibility = "hidden";
+            progress.style.display = "none";
 
             let info = document.getElementsByClassName("info")[0];
 
@@ -116,11 +116,12 @@ window.addEventListener("load", () => {
             let link = document.getElementsByClassName("link")[0];
             link.href = thisExercise.link;
 
-            info.style.visibility = "visible";
+            info.style.display = "block";
 
         }
         if (id == 0 && wrapper.children[wrapper.children.length - 1]) {
             // wrapper.removeChild(wrapper.children[1]);
+            let info = document.getElementsByClassName("info")[0];
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
             exerciseName.innerHTML = "";
 
@@ -132,7 +133,7 @@ window.addEventListener("load", () => {
 
             let teacherName = document.getElementsByClassName("teacher-name")[0];
             teacherName.innerHTML = "";
-            info.style.visibility = "hidden";
+            info.style.display = "none";
         }
     }
 

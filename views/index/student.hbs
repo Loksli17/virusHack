@@ -22,7 +22,8 @@
     .info {
         background: #fff;
         padding: 5px;
-        visibility: hidden;
+        /* visibility: hidden; */
+        display: none;
     }
 
     .label {
@@ -94,9 +95,9 @@
         <form class="file-form" action="/file" method="post">
             <input id="file" type="file" name="" value="">
             <div class="progress">
-                <progress style="visibility: hidden" max="100" value="0" id="progress"></progress>
+                <progress max="100" value="0" id="progress"></progress>
             </div>
-            <input id="submit" style="visibility: hidden" type="submit" name="" value="Отправить файл">
+            <input id="submit" style="display: none" type="submit" name="" value="Отправить файл">
         </form>
         <div class="teacher-name"></div>
         <!-- <div class="link">haha</div> -->

@@ -5,8 +5,7 @@ window.addEventListener("load", () => {
     let file = document.getElementById("file");
     file.addEventListener("change", () => {
         let submit = document.getElementById("submit");
-        submit.style.visibility = "visible";
-        console.log("kek");
+        submit.style.display = "inline-block";
     }, true);
 }, true);
 
@@ -24,7 +23,7 @@ function upload(e) {
     ajax.upload.onprogress = (e) => {
         let percent = e.loaded / e.total;
         console.log(e.loaded, e.total);
-        progress.style.visibility = "visible";
+        progress.style.display = "block";
         progress.setAttribute('max', event.total);
         progress.value = event.loaded;
     }
