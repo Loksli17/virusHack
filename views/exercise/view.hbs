@@ -8,17 +8,16 @@
             {{this.firstname}}
             {{this.patronyc}}
         </div>
-        <div class="">
+        <div class="presence">
             {{#if this.presence}}
             <div class="yes-student">
-                Присутствие{{this.presence}}
+                Студент есть
             </div>
             {{else}}
             <div class="no-student">
-
+                Студента нет
             </div>
             {{/if}}
-
         </div>
         <div class="">
             {{this.fTitle}}
@@ -31,13 +30,13 @@
         </div>
 
         {{#if this.pass}}
-        <div class="">
-        {{this.pass}}
-        </div>
+            <div class="pass">
+                Студент сдал
+            </div>
         {{else}}
-        <div class="">
-        Студент отсутствовал
-        </div>
+            <div class="">
+                Студент не сдал
+            </div>
         {{/if}}
 
         <br>
@@ -45,3 +44,5 @@
         <br>
     {{/each}}
 </table>
+
+<script src="/js/persence.js"></script>

@@ -85,6 +85,7 @@ const authRouter     = require('./routes/authRouter');
 const studentRouter  = require('./routes/studentRouter');
 const teacherRouter  = require('./routes/teacherRouter');
 const adminRouter    = require('./routes/adminRouter');
+const statRouter     = require('./routes/statRouter');
 
 //routes init
 app.use('/', indexRouter);
@@ -94,6 +95,7 @@ app.use('/student', studentRouter);
 app.use('/teacher', teacherRouter);
 app.use('/admin', adminRouter);
 app.use('/file', fileRouter);
+app.use('/stat', statRouter);
 
 //soft
 app.use(function(req, res){

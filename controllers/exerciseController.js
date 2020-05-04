@@ -44,7 +44,6 @@ exports.actionView = async (req, res) => {
             'group.title as gtitle',
             'user.role_id',
             'exercise.id as exID',
-            'file.title as fTitle',
             'control.presence',
             'control.pass',
         ],
@@ -65,6 +64,8 @@ exports.actionView = async (req, res) => {
     for(let i = 0; i < users.length; i++){
         users[i].num = i + 1;
     }
+
+    console.log(users);
 
     group = users[0].gtitle;
 
