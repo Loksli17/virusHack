@@ -35,3 +35,17 @@
 .grid-view > .view-row:nth-child(odd) {
     background: #f9f9f9;
 }
+
+.second-col{
+    margin-top: 40px;
+}
+
+.view-content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+}
+
+.view-content i{
+    display: none;
+}

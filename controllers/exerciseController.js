@@ -10,11 +10,11 @@ const File     = new FileModel();
 const Group    = new GroupModel();
 const User     = new UserModel();
 
+
 exports.actionView = async (req, res) => {
     let users = {};
     const
         GET  = req.query;
-
 
     if(GET.id == undefined){
         res.render('server/error.hbs', {
@@ -27,10 +27,13 @@ exports.actionView = async (req, res) => {
 
     let
         id = Number(GET.id);
-    console.log("id = "+id);
+
+    console.log("id = " + id);
+
     if(isNaN(id)){
         id = 1;
     }
+
     users = await User.find('all', {
         select: [
             'user.id as Id',
@@ -54,6 +57,7 @@ exports.actionView = async (req, res) => {
     })
 
     console.log(users.length);
+
     res.render('exercise/view', {
         users : users,
     })
@@ -102,7 +106,7 @@ exports.actionEdit = async (req, res) => {
     if(POST.do == undefined){
         res.render('exercise/edit', {
             action    : 'edit?id=' + id,
-            fields    : exercise.fields,
+            fields    : Exercise.fields,
             formData  : exercise,
             files     : files,
             exerciseId: id,
@@ -121,10 +125,14 @@ exports.actionEdit = async (req, res) => {
     }else{
         res.render('server/error.hbs', {
             action    : 'edit?id=' + id,
-            fields    : exercise.fields,
+            fields    : Exercise.fields,
             formData  : exercise,
             files     : files,
             exerciseId: id,
         });
     }
+}
+
+exports.fileDelete = async (req, res) => {
+
 }
