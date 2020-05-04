@@ -20,10 +20,10 @@ function server(e){
     ajax.onload = ajax.onerror = function() {
         console.log(this.status);
 
-        if (element.className = "no-student") {
-            element.className = "yes-student"
-        } else if (element.className = "yes-student") {
-            element.className = "no-student"
+        if (element.className = "presence-no") {
+            element.className = "presence-yes"
+        } else if (element.className = "presence-yes") {
+            element.className = "presence-no"
         }
 
         if (this.status == 200) {
