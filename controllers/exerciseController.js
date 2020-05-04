@@ -40,11 +40,13 @@ exports.actionView = async (req, res) => {
             'user.firstname',
             'user.lastname',
             'user.patronyc',
-            //'file.title as ftitle',
+            'file.title as ftitle',
             'group.title as gtitle',
             'user.role_id',
             'exercise.id as exID',
-            'file.title as fTitle'
+            'file.title as fTitle',
+            'control.presence',
+            'control.pass',
         ],
         group : 'Id',
         where: [
@@ -52,9 +54,11 @@ exports.actionView = async (req, res) => {
             ['exercise.id = ', id, '']
         ],
         join : [
+
             ['left', 'file', 'file.user_id = user.id'],
             ['inner' ,'group', 'user.group_id = group.id'],
             ['inner', 'exercise', 'exercise.group_id = group.id'],
+            ['inner', 'control', 'control.user_id = user.id'],
         ]
     })
 

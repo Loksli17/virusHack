@@ -9,9 +9,16 @@
             {{this.patronyc}}
         </div>
         <div class="">
+            {{#if this.presence}}
+            <div class="yes-student">
+                Присутствие{{this.presence}}
+            </div>
+            {{else}}
             <div class="no-student">
 
             </div>
+            {{/if}}
+
         </div>
         <div class="">
             {{this.fTitle}}
@@ -22,6 +29,16 @@
         <div class="">
 
         </div>
+
+        {{#if this.pass}}
+        <div class="">
+        {{this.pass}}
+        </div>
+        {{else}}
+        <div class="">
+        Студент отсутствовал
+        </div>
+        {{/if}}
 
         <br>
         <br>
