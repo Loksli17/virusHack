@@ -172,6 +172,7 @@ exports.actionIndexStudent = async (req, res) => {
 
     }
 
+    console.log(exerView[1], exercises);
     res.render('index/student', {
         exerView: exerView,
         exercises: JSON.stringify(exercises),
