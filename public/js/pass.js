@@ -2,7 +2,12 @@ window.addEventListener("load", () => {
 
     let aArr = document.querySelectorAll('.pass');
     for(let i = 0; i < aArr.length; i++){
+<<<<<<< HEAD
         aArr[i].addEventListener('click', pass, false);
+=======
+        console.log(aArr[i]);
+        aArr[i].addEventListener('click', server, false);
+>>>>>>> f168a0597b0b3b0a5d3bec5cb25e6b44b57c5e04
     }
 }, true);
 
@@ -10,6 +15,7 @@ function pass(e){
     console.log('pass');
     e.stopPropagation();
     e.preventDefault();
+    console.log(this);
 
     let
         formData = new FormData(),
