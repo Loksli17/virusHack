@@ -27,7 +27,7 @@ const storageConfigTeacher = multer.diskStorage({
     filename: (req, file, cb) => {
         let type = file.mimetype.split('/');
         console.log(file);
-        cb(null, file.originalname + '.' +  type[1].toUpperCase());
+        cb(null, file.originalname);
     }
 });
 
