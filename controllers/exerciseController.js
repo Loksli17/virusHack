@@ -39,15 +39,17 @@ exports.actionView = async (req, res) => {
             'user.id as Id',
             'user.firstname',
             'user.lastname',
+            'user.patronyc',
             //'file.title as ftitle',
             'group.title as gtitle',
             'user.role_id',
             'exercise.id as exID',
+            'file.title as fTitle'
         ],
         group : 'Id',
         where: [
-            ['user.role_id =','4',' AND '],
-            ['exercise.id = ',id, '']
+            ['user.role_id =', '4', ' AND '],
+            ['exercise.id = ', id, '']
         ],
         join : [
             ['left', 'file', 'file.user_id = user.id'],
@@ -56,10 +58,15 @@ exports.actionView = async (req, res) => {
         ]
     })
 
-    console.log(users.length);
+    for(let i = 0; i < users.length; i++){
+        users[i].num = i + 1;
+    }
+
+    group = users[0].gtitle;
 
     res.render('exercise/view', {
-        users : users,
+        users: users,
+        group: group,
     })
 
 }

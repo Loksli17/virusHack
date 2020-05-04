@@ -1,6 +1,30 @@
-{{#each users}}
-    {{this.firstname}}
-    <br>{{this.lastname}}
-    <br>
-    <br>
-{{/each}}
+<table>
+    {{#each users}}
+        <div class="">
+            {{this.num}}
+        </div>
+        <div class="">
+            {{this.lastname}}
+            {{this.firstname}}
+            {{this.patronyc}}
+        </div>
+        <div class="">
+            <div class="no-student">
+
+            </div>
+        </div>
+        <div class="">
+            {{this.fTitle}}
+        </div>
+        <div class="">
+
+        </div>
+        <div class="">
+
+        </div>
+
+        <br>
+        <br>
+        <br>
+    {{/each}}
+</table>
