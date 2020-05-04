@@ -11,8 +11,8 @@ ControlModel.prototype = Object.create(modelMysql.prototype);
 ControlModel.prototype.constructor = ControlModel;
 
 ControlModel.prototype.rules = {
-    integer : ['pass', 'presence','user_id','exercise_id']
-
+    integer : ['pass', 'presence','user_id','exercise_id'],
+    required: ['id'],
 };
 
 ControlModel.prototype.rulesMesseges = {
