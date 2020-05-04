@@ -78,6 +78,8 @@ exports.actionPass = async (req, res) => {
         control.pass = 0;
         let res = await Control.save(control, control.id);
     }
+
+    res.send();
 }
 
 exports.actionView = async (req, res) => {
