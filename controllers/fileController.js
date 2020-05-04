@@ -1,5 +1,7 @@
 const DateModule = require('./../lib/date.js');
 
+const fs         = require('fs');
+
 const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
 const FileModel     = require('./../models/FileModel');
@@ -7,6 +9,17 @@ const FileModel     = require('./../models/FileModel');
 const Exercise = new ExerciseModel();
 const File     = new FileModel();
 
+exports.actionDelete = (req, res) => {
+    if(!req.xhr){
+        res.render('server/error', {
+            layout : null,
+            err    : 500,
+            messege: "Iternal Server Error",
+        });
+        return;
+    }
+
+}
 
 exports.actionFileUpload = (req, res) => {
     if(!req.xhr){
