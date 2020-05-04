@@ -41,7 +41,7 @@ function upload(e) {
         viewContent.className = "view-content";
         let fileDel = document.createElement("a");
         fileDel.className = "file-del";
-        fileDel.href = "/file/delete?filename=" + file.name + "&path=/teacher";
+        fileDel.href = "/file/delete?filename=" + file.name + "&path=/student";
         fileDel.innerHTML = "Удалить";
         let fa = document.createElement("i");
         fa.className = "fa fa-spinner fa-spin";

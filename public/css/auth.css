@@ -8,14 +8,15 @@
     flex-flow: column;
     height: 100vh;
     background: #F8F9FC;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
 h1{
-    font-family: Nunito;
-    font-style: Bold;
+    font-family: nunito;
+    font-weight: 600;
     font-size: 64px;
+    color: #5A5C69;
 }
 
 form{
@@ -25,6 +26,9 @@ form{
     width: 850px;
     padding: 25px;
     background: #fff;
+    margin-top: 70px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 8px -3px #ccc;
 }
 
 label{
@@ -33,12 +37,159 @@ label{
 }
 
 label > span{
-    font-family: Nunito;
-    font-style: SemiBold;
+    font-family: nunito;
+    font-weight: 600;
     font-size: 24px;
     margin-bottom: 10px;
+    text-align: center;
+    color: #454545;
 }
 
 label:first-child{
     margin-bottom: 50px;
+}
+
+.rememberMe{
+    margin-top: 15px;
+    flex-flow: row;
+}
+
+.rememberMe > div{
+    font-family: nunito;
+    font-size: 18px;
+    font-weight: 600;
+    margin-left: 10px;
+    transform: translateY(4px);
+}
+
+.rememberMe > input{
+    height: 20px;
+    width: 20px;
+    background: #fff;
+    border: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #fff;
+}
+
+.container input:checked ~ .checkmark {
+  background-color: #fff;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #ccc;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+
+.submit{
+    margin-top: 50px;
+}
+
+input[type="submit"]{
+    background: #6E73FF;
+    height: 36px;
+    width: 300px;
+    border: 0;
+    font-family: Nunito;
+    font-style: Regular;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover{
+    cursor: pointer;
+    transition: 0.4s;
+    background: #5340C7;
+}
+
+.logo{
+    margin: 60px 0px;
+}
+
+input[type="password"], input[type="email"]{
+    background: #fff;
+    border: 0px;
+    text-align: center;
+    color: #ccc;
+    font-size: 18px;
+    height: 25px;
+}
+
+input:focus{
+    outline: 0;
+}
+
+@-webkit-keyframes autofill {
+  to {
+    color: #ccc;
+    background: transparent;
+    font-size: 18px;
+  }
+}
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+  font-size: 18px;
+}
+
+.line{
+    width: 430px;
+    height: 4px;
+    background: #cecece;
+    border-radius: 2px;
 }
