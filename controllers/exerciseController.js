@@ -32,14 +32,16 @@ exports.actionPresence = async (req, res) => {
     control = await Control.find('one',{
         where : [
             ['user_id = ', GET.idUser, 'AND'],
-            ['exercise_id = ', GET.idExercise,'']
+            ['id = ', GET.idc,'']
         ]
     })
 
     if (control.presence == 0){
-        await Control.query("UPDATE control SET presence = 1 WHERE id =" + control.id);
+        control.presence = 1;
+        let res = await Control.save(control, control.id);
     }else{
-        await Control.query("UPDATE control SET presence = 0 WHERE id =" + control.id);
+        control.presence = 0;
+        let res = await Control.save(control, control.id);
     }
 
 
@@ -65,14 +67,16 @@ exports.actionPass = async (req, res) => {
     control = await Control.find('one',{
         where : [
             ['user_id = ', GET.idUser, 'AND'],
-            ['exercise_id = ', GET.idExercise,'']
+            ['id = ', GET.idc,'']
         ]
     })
 
     if (control.pass == 0){
-        await Control.query("UPDATE control SET pass = 1 WHERE id =" + control.id);
+        control.pass = 1;
+        let res = await Control.save(control, control.id);
     }else{
-        await Control.query("UPDATE control SET pass = 0 WHERE id =" + control.id);
+        control.pass = 0;
+        let res = await Control.save(control, control.id);
     }
 }
 
@@ -112,6 +116,7 @@ exports.actionView = async (req, res) => {
             'file.title as fTitle',
             'control.presence',
             'control.pass',
+            'control.id as idc',
         ],
         group : 'Id',
         where: [
@@ -119,7 +124,6 @@ exports.actionView = async (req, res) => {
             ['exercise.id = ', id, '']
         ],
         join : [
-
             ['left', 'file', 'file.user_id = user.id'],
             ['inner' ,'group', 'user.group_id = group.id'],
             ['inner', 'exercise', 'exercise.group_id = group.id'],
@@ -140,6 +144,7 @@ exports.actionView = async (req, res) => {
 
     group = users[0].gtitle;
 
+    console.log(users);
     res.render('exercise/view', {
         users: users,
         group: group,

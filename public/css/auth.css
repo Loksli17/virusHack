@@ -1,0 +1,44 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.wrapper{
+    display: flex;
+    flex-flow: column;
+    height: 100vh;
+    background: #F8F9FC;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-family: Nunito;
+    font-style: Bold;
+    font-size: 64px;
+}
+
+form{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 850px;
+    padding: 25px;
+    background: #fff;
+}
+
+label{
+    display: flex;
+    flex-flow: column;
+}
+
+label > span{
+    font-family: Nunito;
+    font-style: SemiBold;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+label:first-child{
+    margin-bottom: 50px;
+}
