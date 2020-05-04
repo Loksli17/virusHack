@@ -9,7 +9,7 @@ const FileModel     = require('./../models/FileModel');
 const Exercise = new ExerciseModel();
 const File     = new FileModel();
 
-exports.actionDelete = (req, res) => {
+exports.actionFileDelete = (req, res) => {
     if(!req.xhr){
         res.render('server/error', {
             layout : null,
@@ -18,6 +18,7 @@ exports.actionDelete = (req, res) => {
         });
         return;
     }
+
 
 }
 
@@ -65,22 +66,4 @@ exports.actionFileUpload = (req, res) => {
         res.status(500);
         res.send();
     }
-}
-
-
-exports.actionFileDelete = (req, res) => {
-    if(!req.xhr){
-        res.render('server/error', {
-            layout : null,
-            err    : 500,
-            messege: "Iternal Server Error",
-        });
-        return;
-    }
-
-    const
-        GET = req.query;
-
-    console.log(GET.filename);
-    res.send();
 }
