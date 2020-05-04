@@ -8,16 +8,18 @@
             {{this.firstname}}
             {{this.patronyc}}
         </div>
-        <div class="presence">
-            {{#if this.presence}}
-            <div class="yes-student">
-                Студент есть
-            </div>
-            {{else}}
-            <div class="no-student">
-                Студента нет
-            </div>
-            {{/if}}
+        <div class="">
+            <a class="presence" href="/exersice/persence?idUser={{this.Id}}&idExercise={{this.idExer}}">
+                {{#if this.presence}}
+                <div class="yes-student">
+                    Студент есть
+                </div>
+                {{else}}
+                <div class="no-student">
+                    Студента нет
+                </div>
+                {{/if}}
+            </a>
         </div>
         <div class="">
             {{this.fTitle}}
@@ -26,18 +28,20 @@
 
         </div>
         <div class="">
-
+            <a class="presence" href="/exersice/pass?idUser={{this.Id}}&idExercise={{this.idExer}}">
+                {{#if this.pass}}
+                    <div class="pass">
+                        Студент сдал
+                    </div>
+                {{else}}
+                    <div class="">
+                        Студент не сдал
+                    </div>
+                {{/if}}
+            </a>
         </div>
 
-        {{#if this.pass}}
-            <div class="pass">
-                Студент сдал
-            </div>
-        {{else}}
-            <div class="">
-                Студент не сдал
-            </div>
-        {{/if}}
+
 
         <br>
         <br>
@@ -46,3 +50,4 @@
 </table>
 
 <script src="/js/persence.js"></script>
+<script src="/js/pass.js"></script>

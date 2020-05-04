@@ -19,7 +19,7 @@ function upload(e) {
         progress = document.querySelector('progress'),
         formData = new FormData(),
         file = e.target.elements[0].files[0]
-    ajax = new XMLHttpRequest();
+        ajax = new XMLHttpRequest();
 
     ajax.upload.onprogress = (e) => {
         let percent = e.loaded / e.total;

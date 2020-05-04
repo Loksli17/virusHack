@@ -105,13 +105,14 @@ exports.actionView = async (req, res) => {
 
     for(let i = 0; i < users.length; i++){
         users[i].num = i + 1;
+        users[i].idExer = id;
     }
 
     group = users[0].gtitle;
 
     res.render('exercise/view', {
-        users: users,
-        group: group,
+        users : users,
+        group : group,
     })
 
 }

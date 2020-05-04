@@ -37,7 +37,8 @@ function deleteFile(e) {
         let i = parent.lastElementChild;
         console.log(2);
         // i.style.display = "none";
-
+        let row = parent.parentNode;
+        row.remove();
         console.log(this.status);
         if (this.status == 200) {
 
