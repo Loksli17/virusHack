@@ -4,12 +4,53 @@ const UserModel     = require('./../models/UserModel');
 const ExerciseModel = require('./../models/ExerciseModel');
 const FileModel     = require('./../models/FileModel');
 const GroupModel    = require('./../models/GroupModel');
+const ControlModel  = require('./../models/ControlModel');
 
 const Exercise = new ExerciseModel();
 const File     = new FileModel();
 const Group    = new GroupModel();
 const User     = new UserModel();
+const Control  = new ControlModel();
 
+
+exports.actionPresence = async (req, res) => {
+    let control = {};
+    if(!req.xhr){
+        res.render('server/error', {
+            layout : null,
+            err    : 500,
+            messege: "Iternal Server Error",
+        });
+        return;
+    }
+
+    const
+        GET  = req.query;
+    control = await Control.find({
+        select : [
+            'id'
+        ],
+        where : [
+            ['user_id = ', GET.idUser, 'AND'],
+            ['exercise_id = ', GET.idExercise,'']
+        ]
+    })
+
+    if (GET.presence == 1){
+        await Control.save(
+            {
+                
+            }
+            ,control.id)
+    }else{
+
+    }
+
+}
+
+exports.actionPass = async (req, res) => {
+
+}
 
 exports.actionView = async (req, res) => {
     let users = {};
@@ -44,6 +85,7 @@ exports.actionView = async (req, res) => {
             'group.title as gtitle',
             'user.role_id',
             'exercise.id as exID',
+            'file.title as fTitle',
             'control.presence',
             'control.pass',
         ],
@@ -64,8 +106,6 @@ exports.actionView = async (req, res) => {
     for(let i = 0; i < users.length; i++){
         users[i].num = i + 1;
     }
-
-    console.log(users);
 
     group = users[0].gtitle;
 
