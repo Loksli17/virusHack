@@ -15,7 +15,7 @@ const Control  = new ControlModel();
 
 exports.actionPresence = async (req, res) => {
     let control = {};
-    
+
     if(!req.xhr){
         res.render('server/error', {
             layout : null,
@@ -108,6 +108,7 @@ exports.actionView = async (req, res) => {
 
     for(let i = 0; i < users.length; i++){
         users[i].num = i + 1;
+        users[i].idExer = id;
     }
 
     group = users[0].gtitle;

@@ -9,7 +9,7 @@
             {{this.patronyc}}
         </div>
         <div class="">
-            <a class="presence" href="/exersice/persence?idUser={{this.Id}}&idExercise={{this.idExer}}">
+            <a class="presence" href="/exercise/persence?idUser={{this.Id}}&idExercise={{this.idExer}}">
                 {{#if this.presence}}
                 <div class="yes-student">
                     Студент есть
@@ -28,9 +28,9 @@
 
         </div>
         <div class="">
-            <a class="presence" href="/exersice/pass?idUser={{this.Id}}&idExercise={{this.idExer}}">
+            <a class="pass" href="/exercise/pass?idUser={{this.Id}}&idExercise={{this.idExer}}">
                 {{#if this.pass}}
-                    <div class="pass">
+                    <div class="">
                         Студент сдал
                     </div>
                 {{else}}
