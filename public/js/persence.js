@@ -1,11 +1,13 @@
 window.addEventListener("load", () => {
+
     let aArr = document.querySelectorAll('.presence');
     for(let i = 0; i < aArr.length; i++){
-        aArr[i].addEventListener('click', server, false);
+        aArr[i].addEventListener('click', persence, false);
     }
 }, true);
 
-function server(e){
+function persence(e){
+    console.log('persence');
     e.stopPropagation();
     e.preventDefault();
 

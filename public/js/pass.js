@@ -1,11 +1,13 @@
 window.addEventListener("load", () => {
+
     let aArr = document.querySelectorAll('.pass');
     for(let i = 0; i < aArr.length; i++){
-        aArr[i].addEventListener('click', server, false);
+        aArr[i].addEventListener('click', pass, false);
     }
 }, true);
 
-function server(e){
+function pass(e){
+    console.log('pass');
     e.stopPropagation();
     e.preventDefault();
 
