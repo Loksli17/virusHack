@@ -1,4 +1,16 @@
-<select class="" name="">
+<style media="screen">
+    .reset-filter {
+        display: inline-block;
+        background: #ccc;
+        margin: 10px;
+        padding: 5px 10px;
+    }
+    .reset-filter:hover {
+        cursor: pointer;
+    }
+</style>
+
+<select id="selector" class="" name="">
     <option value="" selected disabled>Выберете курс</option>
     {{#each courses}}
         <option value="{{this.id}}">{{this.title}}</option>
@@ -16,3 +28,9 @@
         </div>
     {{/each}}
 </div>
+
+<div class="reset-filter">
+    Сброс фильтрации
+</div>
+
+<script src="js/filter.js"></script>
