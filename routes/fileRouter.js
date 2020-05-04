@@ -10,13 +10,7 @@ const storageConfigStudent = multer.diskStorage({
         cb(null, 'public/file/student');
     },
     filename: (req, file, cb) => {
-        let type = file.mimetype.split('/'),
-            rand = 0 + Math.random() * (20000 + 1 - 0),
-            name = '';
-
-        name = String(rand) + req.session.userIndentity.id;
-        name = crypto.createHash('sha256', config.user.passSecret).update(name).digest('hex');
-        cb(null, name + '.' +  type[1].toUpperCase());
+        cb(null, file.originalname);
     }
 });
 
