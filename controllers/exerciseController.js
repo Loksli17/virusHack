@@ -29,30 +29,51 @@ exports.actionPresence = async (req, res) => {
         GET  = req.query;
 
     console.log(GET);
-    // control = await Control.find({
-    //     select : [
-    //         'id'
-    //     ],
-    //     where : [
-    //         ['user_id = ', GET.idUser, 'AND'],
-    //         ['exercise_id = ', GET.idExercise,'']
-    //     ]
-    // })
-    //
-    // if (GET.presence == 1){
-    //     await Control.save(
-    //         {
-    //
-    //         }
-    //         ,control.id)
-    // }else{
-    //
-    // }
+    control = await Control.find('one',{
+        where : [
+            ['user_id = ', GET.idUser, 'AND'],
+            ['exercise_id = ', GET.idExercise,'']
+        ]
+    })
+
+    if (control.presence == 0){
+        await Control.query("UPDATE control SET presence = 1 WHERE id =" + control.id);
+    }else{
+        await Control.query("UPDATE control SET presence = 0 WHERE id =" + control.id);
+    }
+
+
     res.send();
 }
 
 exports.actionPass = async (req, res) => {
+    let control = {};
 
+    if(!req.xhr){
+        res.render('server/error', {
+            layout : null,
+            err    : 500,
+            messege: "Iternal Server Error",
+        });
+        return;
+    }
+
+    const
+        GET  = req.query;
+
+    console.log(GET);
+    control = await Control.find('one',{
+        where : [
+            ['user_id = ', GET.idUser, 'AND'],
+            ['exercise_id = ', GET.idExercise,'']
+        ]
+    })
+
+    if (control.pass == 0){
+        await Control.query("UPDATE control SET pass = 1 WHERE id =" + control.id);
+    }else{
+        await Control.query("UPDATE control SET pass = 0 WHERE id =" + control.id);
+    }
 }
 
 exports.actionView = async (req, res) => {
@@ -109,6 +130,12 @@ exports.actionView = async (req, res) => {
     for(let i = 0; i < users.length; i++){
         users[i].num = i + 1;
         users[i].idExer = id;
+        if (users[i].presence == 0){
+            delete users[i].persence;
+        }
+        if (users[i].pass == 0){
+            delete users[i].pass;
+        }
     }
 
     group = users[0].gtitle;
