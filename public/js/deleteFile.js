@@ -16,6 +16,7 @@ function deleteFile(e){
     console.log(this.href);
 
     let
+        formData = new FormData(),
         ajax = new XMLHttpRequest();
 
     ajax.upload.onprogress = (e) => {
@@ -31,6 +32,7 @@ function deleteFile(e){
 
         }
     }
+
 
     ajax.open("POST", this.href);
     ajax.setRequestHeader('Accept', 'application/json, text/javascript, */*, q=0.01');
