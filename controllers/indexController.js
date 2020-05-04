@@ -101,7 +101,6 @@ exports.actionIndexStudent = async (req, res) => {
         lastDate = DateModule.formatDbDate(datesWeek.lastDate),
         currentDate = new Date();
 
-
     exercises = await Exercise.find('all', {
         select: [
             'exercise.id as id',
@@ -164,13 +163,26 @@ exports.actionIndexStudent = async (req, res) => {
             ]
         });
 
+        filesStudent = await File.find('all', {
+            select: ['title'],
+            where: [
+                ['user_id = ', req.session.userIndentity.id, 'AND'],
+                ['exercise_id =', exercises[i].id, ''],
+            ]
+        });
+
         exercises[i].files = [];
+        exercises[i].filesStudent = [];
 
         for (j = 0; j < files.length; j++) {
             exercises[i].files.push(files[j].title);
         }
 
+        for (j = 0; j < filesStudent.length; j++) {
+            exercises[i].filesStudent.push(filesStudent[j].title);
+        }
     }
+
     res.render('index/student', {
         exerView: exerView,
         exercises: JSON.stringify(exercises),

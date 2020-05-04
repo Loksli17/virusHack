@@ -19,7 +19,10 @@ exports.actionIndex = async (req, res) => {
         students      = [],
         counUsers     = 0,
         counterPass   = 0,
-        counterPres   = 0;
+        counterPres   = 0,
+        labels        = [],
+        presArr       = [],
+        passArr       = [];
 
     counExercise = await Exercise.find('all', {
         where: [
@@ -64,17 +67,15 @@ exports.actionIndex = async (req, res) => {
         }
     }
 
-    for(let i = 1; i < counUsers; i++){
-        for(let j = 1; j < counExercise; j++){
-            console.log(i * j);
-            if(users[i * j].presence) counterPres++;
-            if(users[i * j].pass) counterPass++;
-        }
-
-        counterPass = 0;
-        counterPres = 0;
+    for(let i = 0; i < students.length; i++){
+        labels.push(students[i].user);
+        passArr.push(students[i].pass);
+        presArr.push(students[i].pres);
     }
 
-    // res.send(counExercise);
-    res.render ('stat/index');
+    res.render ('stat/index', {
+        labels : JSON.stringify(labels),
+        passArr: JSON.stringify(passArr),
+        presArr: JSON.stringify(presArr),
+    });
 }

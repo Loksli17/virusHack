@@ -118,8 +118,6 @@ exports.actionLogin = async (req, res) => {
     }else if (user.role_id == 2){
         res.redirect('/admin');
     }
-
-    res.redirect('/');
     return;
 };
 
