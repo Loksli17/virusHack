@@ -93,9 +93,10 @@ window.addEventListener("load", () => {
             let attachedFiles = document.getElementById("attached-files");
             attachedFiles.innerHTML = "";
             for (let i = 0; i < thisExercise.files.length; i++) {
-                let file = document.createElement("div");
-                file.className = "attached-file"
+                let file = document.createElement("a");
+                file.className = "attachment";
                 file.textContent = thisExercise.files[i];
+                file.href = "/file/student/" + thisExercise.files[i];
                 attachedFiles.appendChild(file);
             }
 

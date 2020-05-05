@@ -56,9 +56,6 @@ window.addEventListener("load", () => {
             let link = document.getElementById("link");
             link.href = thisExercise.link;
 
-            let description = null;
-            description.textContent = thisExercise.description;
-
             let setup = document.getElementById("setup");
             setup.href = "/exercise/edit?id=" + id;
 
@@ -69,7 +66,8 @@ window.addEventListener("load", () => {
             time.textContent = thisExercise.time;
 
             let description = document.getElementsByClassName("lessonDescription")[0];
-            description.thisExercise.desc;
+            console.log(thisExercise.description);
+            description.textContent = thisExercise.description;
 
             info.style.display = "block";
 
