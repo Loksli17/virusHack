@@ -49,7 +49,7 @@
     {{/each}}
     </div>
 
-
+<h1>Просмотр пары</h1>
 
     <div class="lessonAbout info">
 		<div class="lessonAboutInfo">
@@ -80,8 +80,23 @@
 		<div class="lessonPanel">
 			<a class="joinLesson link" href="/file/">Подключиться к занятию</a>
 			<a class="contactTeacher" href="">Написать преподавателю</a>
-			<div class="lessonWork">
-				<span>Работа на паре</span>
+            <div class="lessonWork">
+                <span>Работа на паре</span>
+                <form class="file-form" action="/file" method="post">
+                    <div id="files-field" class="files-field">
+
+                    </div>
+                    <input id="file" type="file" name="file" id="file" class="inputfile" />
+                    <label for="file">Добавить файл</label>
+                    <div class="progress">
+                        <progress max="100" value="0" id="progress"></progress>
+                    </div>
+                    <input id="submit" style="display: none" type="submit" name="" value="Отправить файл">
+                </form>
+            </div>
+
+			<!-- <div class="lessonWork" id="files-field">
+
 				<div class="lessonReport">
 					<span>931-3_Bspline_otvety.txt</span>
 					<div class="cancelCross"></div>
@@ -91,11 +106,34 @@
 					<div class="cancelCross"></div>
 				</div>
 				<a class="sendReport" href="">Досдать задание</a>
-			</div>
+			</div> -->
 		</div>
 	</div>
 
 </div>
+
+<!-- <div class="">
+        <div class="name">
+            <h5 class="label">пара</h5>
+            <h1 id="exercise-name" class="exercise-name"></h1>
+        </div>
+        <div class="description"></div>
+        <div id="attached-files" class="attached-files"></div>
+
+        <form class="file-form" action="/file" method="post">
+            <div id="files-field" class="files-field">
+
+            </div>
+            <input id="file" type="file" name="" value="">
+            <div class="progress">
+                <progress max="100" value="0" id="progress"></progress>
+            </div>
+            <input id="submit" style="display: none" type="submit" name="" value="Отправить файл">
+        </form>
+        <div class="teacher-name"></div>
+        <!-- <div class="link">haha</div> -->
+        <!-- <a class="link" href="">Подключиться к занятию</a>
+    </div> -->
 
 
 <script type="text/javascript">

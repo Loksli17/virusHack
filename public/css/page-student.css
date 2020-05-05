@@ -209,26 +209,28 @@ margin-right: 5px;
   align-items: center;
   background: #CCCCCC;
   position: relative;
-  padding-top: 30px;
+  padding-top: 15px;
   margin-top: 15px;
   width: 100%;
   border-radius: 5px;
 }
 
 .lessonAbout .lessonPanel .lessonWork > span {
-  position: absolute;
-  left: 10px;
-  top: 15px;
   font-size: 20px;
 }
 
-.lessonAbout .lessonPanel .lessonWork .lessonReport {
-  width: 90%;
+.lessonAbout .view-row {
   padding: 3px 0px;
   margin-top: 15px;
   text-align: center;
   color: white;
   position: relative;
+  background: #4E53DF;
+  margin: 5px;
+  border-radius: 5px;
+  width: 365px;
+  box-sizing: border-box;
+  padding: 4px;
 }
 
 .lessonAbout .lessonPanel .lessonWork .lessonReport .cancelCross {
@@ -237,13 +239,6 @@ margin-right: 5px;
   right: -8px;
 }
 
-.lessonAbout .lessonPanel .lessonWork a {
-  width: 75%;
-  text-decoration: none;
-  color: black;
-  text-align: center;
-  padding: 6px 0px;
-}
 
 .content .lessonAbout .lessonPanel .lessonWork .sendReport {
   padding: 3px 0px;
@@ -255,15 +250,6 @@ margin-right: 5px;
   margin-bottom: 25px;
 }
 
-.lessonPanel a{
-    text-decoration: none;
-    padding: 3px 30px;
-    margin: 5px;
-    border-radius: 5px;
-    text-align: center;
-    background: #4E53DF;
-    color: #FFFFFF;
-}
 
 .attachment{
     text-decoration: none;
@@ -274,4 +260,91 @@ margin-right: 5px;
     text-align: center;
     background: #4E53DF;
     color: #FFFFFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    margin: 20px 0px;
+    width: 200px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    background-color: #6E73FF;
+    padding: 5px;
+    display: inline-block;
+    border-radius: 4px;
+}
+.inputfile:focus + label,
+.inputfile + label:hover {
+    cursor: pointer;
+    transition: 0.4s;
+    background: #5340C7;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+
+
+
+.file-del{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    position: absolute;
+    left: calc(100% - 15px);
+    background: #fff;
+    top: -8px;
+}
+
+.file-del:before {
+    display: block;
+    content: "";
+    width: 2px;
+    height: 14px;
+    transform: rotate(45deg);
+    background: #FF7676;
+    position: absolute;
+    left: 9px;
+    top: 3px;
+}
+
+.file-del:after {
+    display: block;
+    content: "";
+    width: 2px;
+    height: 14px;
+    transform: rotate(135deg);
+    background: #FF7676;
+    position: absolute;
+    left: 9px;
+    top: 3px;
 }

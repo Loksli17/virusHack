@@ -238,7 +238,7 @@ exports.actionIndexStudent = async (req, res) => {
         }
 
         for (j = 0; j < filesStudent.length; j++) {
-            exercises[i].filesStudent.push(filesStudent[j].title);
+            exercises[i].filesStudent.push(filesStudent[j].title.substr(0, 35));
         }
     }
 

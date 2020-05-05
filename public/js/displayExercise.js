@@ -70,11 +70,7 @@ window.addEventListener("load", () => {
                 let fileDel = document.createElement("a");
                 fileDel.className = "file-del";
                 fileDel.href = "/file/delete?filename=" + file + "&path=/student";
-                fileDel.textContent = "Удалить";
-                let fa = document.createElement("i");
-                fa.className = "fa fa-spinner fa-spin";
                 viewContent.appendChild(fileDel);
-                viewContent.appendChild(fa);
                 newRow.appendChild(viewField);
                 newRow.appendChild(viewContent);
                 filesField.appendChild(newRow);
