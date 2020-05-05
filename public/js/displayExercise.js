@@ -14,27 +14,35 @@ window.addEventListener("load", () => {
     function getFirstExerciseOfTheDay() {
         let date = new Date();
         let day = date.getDay();
-        console.log(day);
         let days = document.getElementsByClassName("day");
-        if (day != 0) {
-            let currentDay = days[day - 1];
-            console.log(currentDay);
-            let firstExercise;
-            for (let i = 0; i < currentDay.children.length; i++) {
-                let exercise = currentDay.children[i];
-                if (exercise.id != 0) {
-                    firstExercise = exercise;
+        let currentDay = days[day - 1].lastElementChild;
+        let firstExercise;
+        for (let i = 0; i < currentDay.children.length; i++) {
+            let exercise = currentDay.children[i];
+            if (exercise.id) {
+                firstExercise = exercise;
+            }
+        }
+
+        if (!firstExercise) {
+            for (let i = 0; i < days.length; i++) {
+                let currentDay = days[i].lastElementChild;
+                for (let i = 0; i < currentDay.children.length; i++) {
+                    let exercise = currentDay.children[i];
+                    if(exercise.id) {
+                        firstExercise = exercise;
+                    }
                 }
             }
+        }
 
-            let id;
-            if (firstExercise) {
-                id = firstExercise.id;
-            }
+        let id;
+        if (firstExercise) {
+            id = firstExercise.id;
+        }
 
-            if (id) {
-                showInfo(id);
-            }
+        if (id) {
+            showInfo(id);
         }
     }
 
@@ -101,10 +109,14 @@ window.addEventListener("load", () => {
             }
 
             let teacherName = document.getElementsByClassName("teacher-name")[0];
-            teacherName.textContent = thisExercise.teacherFirstName[0] + "." + thisExercise.teacherLastName[0] + ". " + thisExercise.teacherPatronyc;
+            teacherName.textContent = thisExercise.teacherFirstName[0] + "." + thisExercise.teacherPatronyc[0] + ". " + thisExercise.teacherLastName;
 
             let link = document.getElementsByClassName("link")[0];
             link.href = thisExercise.link;
+
+            let time = document.getElementsByClassName("time")[0];
+            console.log(time);
+            time.textContent = thisExercise.time;
 
             info.style.display = "flex";
 
@@ -125,6 +137,10 @@ window.addEventListener("load", () => {
 
             let teacherName = document.getElementsByClassName("teacher-name")[0];
             teacherName.textContent = "";
+
+            let time = document.getElementsByClassName("time")[0];
+            time.textContent = "";
+
             info.style.display = "none";
         }
     }

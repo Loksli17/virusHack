@@ -13,17 +13,29 @@ window.addEventListener("load", () => {
 
     function getFirstExerciseOfTheDay() {
         let date = new Date();
-        let day = date.getDate();
+        let day = date.getDay();
         let days = document.getElementsByClassName("day");
-        let currentDay = days[day - 1];
+        let currentDay = days[day - 1].lastElementChild;
         let firstExercise;
         for (let i = 0; i < currentDay.children.length; i++) {
             let exercise = currentDay.children[i];
-            if (exercise.id != 0) {
+            if (exercise.id) {
                 firstExercise = exercise;
-                console.log(firstExercise);
             }
         }
+
+        if (!firstExercise) {
+            for (let i = 0; i < days.length; i++) {
+                let currentDay = days[i].lastElementChild;
+                for (let i = 0; i < currentDay.children.length; i++) {
+                    let exercise = currentDay.children[i];
+                    if(exercise.id) {
+                        firstExercise = exercise;
+                    }
+                }
+            }
+        }
+
         let id;
         if (firstExercise) {
             id = firstExercise.id;
