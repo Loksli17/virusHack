@@ -1,138 +1,102 @@
-<style media="screen">
-    .week{
-        display: flex;
-    }
-
-    .day{
-        margin-right: 20px;
-    }
-    .exercise{
-        min-height: 100px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    .exercise:hover{
-        background: #ccc;
-        cursor: pointer;
-    }
-
-    .info {
-        background: #fff;
-        padding: 5px;
-        /* visibility: hidden; */
-        display: none;
-    }
-
-    .label {
-        margin-bottom: 0px;
-    }
-
-    .exercise-name {
-        margin: 0px;
-    }
-
-    .description {
-        padding: 10px 0px;
-    }
-
-    .attached-file {
-        background: #ccc;
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 5px;
-    }
-
-    .link {
-        color: black;
-        background: #ccc;
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 5px;
-    }
-
-    .files-field {
-        width: 100%;
-        border: var(--border);
-    }
-
-    .files-field>.view-row {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 5fr 1fr;
-        border-bottom: var(--border);
-    }
-
-    .files-field>.view-row:last-child {
-        border-bottom: 0px solid;
-    }
-
-    .files-field .view-field {
-        padding: 10px 15px;
-        box-sizing: border-box;
-        border-right: var(--border);
-    }
-
-    .files-field .view-content {
-        padding: 10px 15px;
-    }
-
-    .files-field>.view-row:nth-child(even) {
-        background: #dedede;
-    }
-
-    .files-field>.view-row:nth-child(odd) {
-        background: #f9f9f9;
-    }
-
-    .second-col {
-        margin-top: 40px;
-    }
-
-    .view-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-column-gap: 20px;
-    }
-
-    .view-content i {
-        display: none;
-    }
-</style>
+<link rel="stylesheet" href="/css/page-student.css">
 
 <link rel="stylesheet" href="/css/progress.css">
 
-<div id="wrapper" class="wrapper">
-    <div class="week">
+<h1>Текущая неделя</h1>
+    <div class="schedule">
     {{#each exerView}}
         <div class="day">
-            {{#each this.exercises}}
-            <div class="exercise" id='{{this.id}}'>
-                <div class="number">
-                    {{this.number}}
+            <div class="dayTitle">
+				<div>
+					<div class="date">{{date}}</div>
+					<div class="month">мая</div>
                 </div>
-                <div class="sub-title">
-                    {{this.subTitle}}
-                </div>
-                <div class="teacher">
-                    {{this.teacher}}
-                </div>
-                <div class="time">
-                    {{this.time}}
-                </div>
-            </div>
-            {{#if this.gtitle}}
-                <div>
-                    {{this.gtitle}}
-                </div>
-            {{/if}}
-            {{/each}}
+				<span>{{this.dayWeek}}</span>
+			</div>
+            <ul class="dayLessons">
+                {{#each this.exercises}}
+                {{#if this.exist}}
+                <li class="lesson exercise" id="{{this.id}}">
+                    <div class="lessonName">
+                        {{this.subTitle}}
+                    </div>
+                    <div class="lessonTeacher">
+                        <img src="/img/timeTable/man-avatar_1.svg">
+                        <span>{{this.teacher}}</span>
+                    </div>
+                    <div class="lessonTime">
+                        <img src="/img/timeTable/symbol_2.svg">
+                        <span>{{this.time}}</span>
+                    </div>
+                </li>
+                {{else}}
+                <li class="lesson">
+                    <div class="lessonName">
+                        Окно
+                    </div>
+                    <div class="lessonTeacher">
+                        --
+                    </div>
+                    <div class="lessonTime">
+                        <span>00:00</span>
+                    </div>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+
         </div>
     {{/each}}
     </div>
-    <div class="info">
+
+
+
+    <div class="lessonAbout info">
+		<div class="lessonAboutInfo">
+			<span>лекция</span>
+			<div id="exercise-name" class="lessonAboutName exercise-name">
+				Теория вероятностей
+			</div>
+			<div class="lessonDescription description">
+			</div>
+			<div class="descriptionPanel">
+				<div id="attached-files" class="attached attached-files">
+					<img src="/img/timeTable/interface (2) 2.svg">
+					<a class="attachment" href="">1_lektsia.pptx</a>
+					<a class="attachment" href="">931-1_Bspline.txt</a>
+				</div>
+				<div class="teacher">
+					<img src="/img/timeTable/man-avatar_1.svg">
+					<div class="teacherName teacher-name">Чеботарев В.И.</div>
+				</div>
+				<div class="lessonStart">
+					<img src="symbol_2.svg">
+					<div class="date">
+						8:05 03.09.2020
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="lessonPanel">
+			<a class="joinLesson link" href="">Подключиться к занятию</a>
+			<a class="contactTeacher" href="">Написать преподавателю</a>
+			<div class="lessonWork">
+				<span>Работа на паре</span>
+				<div class="lessonReport">
+					<span>931-3_Bspline_otvety.txt</span>
+					<div class="cancelCross"></div>
+				</div>
+				<div class="lessonReport">
+					<span>Timosh_primi_labku.cpp</span>
+					<div class="cancelCross"></div>
+				</div>
+				<a class="sendReport" href="">Досдать задание</a>
+			</div>
+		</div>
+	</div>
+
+
+    <div class="">
         <div class="name">
             <h5 class="label">пара</h5>
             <h1 id="exercise-name" class="exercise-name"></h1>

@@ -140,7 +140,7 @@ window.addEventListener("load", () => {
             let link = document.getElementsByClassName("link")[0];
             link.href = thisExercise.link;
 
-            info.style.display = "block";
+            info.style.display = "flex";
 
         }
         if (id == 0 && wrapper.children[wrapper.children.length - 1]) {
