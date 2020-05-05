@@ -48,13 +48,16 @@ window.addEventListener("load", () => {
             let info = document.getElementsByClassName("info")[0];
 
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
-            exerciseName.innerHTML = thisExercise.subTitle;
+            exerciseName.textContent = thisExercise.subTitle;
 
             let groupTitle = document.getElementsByClassName("group-title")[0];
-            groupTitle.innerHTML = thisExercise.gtitle + " группа";
+            groupTitle.textContent = thisExercise.gtitle + " группа";
 
             let link = document.getElementById("link");
             link.href = thisExercise.link;
+
+            let description = null;
+            description.textContent = thisExercise.description;
 
             let setup = document.getElementById("setup");
             setup.href = "/exercise/edit?id=" + id;
@@ -63,7 +66,7 @@ window.addEventListener("load", () => {
             goto.href = "/exercise/view?id=" + id;
 
             let time = document.getElementById("time");
-            time.innerHTML = thisExercise.time;
+            time.textContent = thisExercise.time;
 
             let description = document.getElementsByClassName("lessonDescription")[0];
             description.thisExercise.desc;
@@ -74,7 +77,7 @@ window.addEventListener("load", () => {
         if (id == 0 && wrapper.lastElementChild) {
             let info = document.getElementsByClassName("info")[0];
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
-            exerciseName.innerHTML = "";
+            exerciseName.textContent = "";
 
             info.style.display = "none";
         }
