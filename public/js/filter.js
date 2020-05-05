@@ -1,5 +1,6 @@
 window.addEventListener("load", () => {
-    let groups = Array.from(document.getElementsByClassName("group")).splice(1);
+    let groups = Array.from(document.getElementsByClassName("groupTable")[0].children).slice();
+    console.log(groups);
     let selector = document.getElementById("selector");
     let options = Array.from(selector.options);
     let resetButton = document.getElementsByClassName("reset-filter")[0];
@@ -20,13 +21,15 @@ window.addEventListener("load", () => {
     function filter(filter) {
         let displayGroup = [];
         groups.forEach((item) => {
-            let id = parseInt(item.children[0].innerHTML);
+            let id = parseInt(item.children[0].children[0].textContent);
+            console.log(id);
             if (id == filter) {
                 displayGroup.push(item);
             }
         });
         console.log(displayGroup);
-        let parent = document.getElementsByClassName("group")[0].parentNode;
+        let parent = document.getElementsByClassName("groupTable")[0];
+
         while (parent.firstElementChild) {
             parent.firstElementChild.remove();
         }
@@ -36,7 +39,8 @@ window.addEventListener("load", () => {
     }
 
     function resetFilter() {
-        let parent = document.getElementsByClassName("group")[0].parentNode;
+        let parent = document.getElementsByClassName("groupTable")[0];
+        console.log(parent);
         while (parent.firstElementChild) {
             parent.firstElementChild.remove();
         }
