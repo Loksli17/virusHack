@@ -25,8 +25,8 @@ ExerciseModel.prototype.rulesMesseges = {
 
 ExerciseModel.prototype.fields = {
     id  :'ID',
-    desc: 'Описание',
-    link: 'Сcылка',
+    desc: 'Описание занятия',
+    link: 'Сcылка на занятие',
 }
 
 ExerciseModel.prototype.validateMessege = 'Ошибка отправки формы';

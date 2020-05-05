@@ -1,22 +1,157 @@
-*{
-    margin: 0px;
-    padding: 0px;
+.margin{
+    margin-top: 30px;
 }
 
-.page-wrap{
-    width: 100%;
+.row-2{
     display: grid;
-    grid-template-columns: max-content auto;
-    padding: 20px 50px;
     grid-column-gap: 50px;
-    box-sizing: border-box;
+    grid-template-columns: 1fr 1fr;
 }
 
-.file-form{
-    margin-top: 50px;
+input[type="text"], textarea{
+    border: 0;
+    padding: 10px;
+    box-shadow: 0px 2px 8px -1px #ccc;
 }
 
-input[type="file"]{
-    border: 0px;
-    padding: 0px;
+.link > .form-elem{
+    display: grid;
+    grid-template-columns: max-content 80%;
+    grid-column-gap: 20px;
+    align-items: center;
+}
+
+.link > .form-elem > span{
+    font-size: 24px;
+    font-family: nunito;
+}
+
+input:focus{
+    outline-color: #6E73FF;
+}
+
+.desc-elem{
+    display: flex;
+    flex-flow: column;
+}
+
+.desc-elem > span{
+    margin: 15px 0px;
+    font-size: 24px;
+    font-family: Nunito;
+    font-weight: 100;
+}
+
+textarea{
+    height: 436px;
+    font-size: 18px;
+    font-family: Nunito;
+    font-weight: 100;
+    border-radius: 8px;
+}
+
+input[type="submit"]{
+    margin-top: 15px;
+    width: 319px;
+    height: 32px;
+    background: #6E73FF;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+    font-family: Nunito;
+    font-weight: 100;
+}
+
+input[type="submit"]:hover{
+    cursor: pointer;
+    transition: 0.4s;
+    background: #5340C7;
+}
+
+.file-wrap{
+    margin-top: 64px;
+    display: grid;
+    grid-row-gap: 10px;
+}
+
+.view-row{
+    position: relative;
+    padding: 10px;
+    border-radius: 4px;
+    background: #6E73FF;
+    max-width: 500px;
+    color: #fff;
+    text-align: center;
+}
+
+#form-file{
+    position: fixed;
+    right: 475px;
+    top: 755px;
+}
+
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: #6E73FF;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 4px;
+}
+.inputfile:focus + label,
+.inputfile + label:hover {
+    cursor: pointer;
+    transition: 0.4s;
+    background: #5340C7;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+
+.file-del{
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    position: absolute;
+    left: calc(100% - 15px);
+    background: #fff;
+    top: -8px;
+}
+
+.file-del:before {
+    display: block;
+    content: "";
+    width: 2px;
+    height: 14px;
+    transform: rotate(45deg);
+    background: #FF7676;
+    position: absolute;
+    left: 9px;
+    top: 3px;
+}
+
+.file-del:after {
+    display: block;
+    content: "";
+    width: 2px;
+    height: 14px;
+    transform: rotate(135deg);
+    background: #FF7676;
+    position: absolute;
+    left: 9px;
+    top: 3px;
 }

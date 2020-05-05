@@ -68,6 +68,9 @@ window.addEventListener("load", () => {
             let time = document.getElementById("time");
             time.textContent = thisExercise.time;
 
+            let description = document.getElementsByClassName("lessonDescription")[0];
+            description.thisExercise.desc;
+
             info.style.display = "block";
 
         }

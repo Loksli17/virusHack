@@ -1,52 +1,58 @@
 <link rel="stylesheet" href="/css/edit.css">
-<link rel="stylesheet" href="/css/grid-view.css">
-<link rel="stylesheet" href="/css/form.css">
 <link rel="stylesheet" href="/css/progress.css">
 
 
-
 <div class="page-wrap">
-    <div class="page-col">
-        <h2>Настройка занятия</h2>
-        <form class="edit-form" action="/exercise/{{action}}" method="post">
-            <label>
-                <div class="form-elem">
-                    <span>{{fields.link}}</span>
-                    <input type="text" name="exercise[link]" value="{{formData.link}}" required>
-                </div>
-            </label>
-
-            <label for="">
-                <div class="form-elem">
-                    <span>{{fields.desc}}</span>
-                    <textarea name="exercise[desc]">{{formData.desc}}</textarea>
-                </div>
-            </label>
-
-            <label>
-                <div class="">
-                    <input type="submit" name="do" value="Отправить">
-                </div>
-            </label>
-        </form>
+    <div class="">
+        <h1>Настройка занятия</h1>
     </div>
-    <div class="page-col second-col">
-        <div class="grid-view">
-            {{#each files}}
-            <div class="view-row">
-                <div class="view-field">
-                    {{this.title}}
+    <div class="margin">
+        <form class="edit-form" action="/exercise/{{action}}" method="post">
+            <div class="">
+                <label class="link">
+                    <div class="form-elem">
+                        <span>{{fields.link}}</span>
+                        <input  type="text" name="exercise[link]" value="{{formData.link}}" required>
+                    </div>
+                </label>
+            </div>
+            <div class="margin">
+                <h1>Материалы к лекции</h1>
+            </div>
+            <div class="row-2">
+                <div class="">
+                    <label for="">
+                        <div class="desc-elem">
+                            <span>{{fields.desc}}</span>
+                            <textarea name="exercise[desc]">{{formData.desc}}</textarea>
+                        </div>
+                    </label>
+                    <label>
+                        <div class="">
+                            <input type="submit" name="do" value="Сохранить изменения">
+                        </div>
+                    </label>
                 </div>
-                <div class="view-content">
-                    <a class="file-del" href="/file/delete?filename={{this.title}}&path=/teacher">Удалить</a>
-                    <i class="fa fa-spinner fa-spin"></i>
+                <div class="">
+                    <div class="file-wrap">
+                        {{#each files}}
+                        <div class="view-row">
+                            <div class="view-field">
+                                {{this.title}}
+                                <a class="file-del" href="/file/delete?filename={{this.title}}&path=/teacher"></a>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                    <div class="">
+                    </div>
                 </div>
             </div>
-            {{/each}}
-        </div>
-        <form class="file-form" action="/file" method="post">
-            <span>Добавить новый файл</span>
-            <input id="file" type="file" name="" value="">
+        </form>
+        <form id="form-file" action="/file" method="post">
+            <input id="file" type="file" name="file" id="file" class="inputfile" />
+            <label for="file">Добавить файл</label>
+            <!-- <input id="file" type="file" name="" value="Добавить файлы"> -->
             <div class="progress">
                 <progress style="visibility: hidden" max="100" value="0" id="progress"></progress>
             </div>

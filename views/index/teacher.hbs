@@ -1,95 +1,89 @@
-<style media="screen">
-    .week{
-        display: flex;
-    }
+<link rel="stylesheet" href="/css/page-teacher.css">
 
-    .day{
-        margin-right: 20px;
-    }
-    .exercise{
-        min-height: 100px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-
-    .exercise:hover{
-        background: #ccc;
-        cursor: pointer;
-    }
-
-    .info {
-        background: #fff;
-        padding: 5px;
-        /* visibility: hidden; */
-        display: none;
-    }
-
-    .label {
-        margin-bottom: 0px;
-    }
-
-    .exercise-name {
-        margin: 0px;
-    }
-
-    .link {
-        color: black;
-        background: #ccc;
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 5px;
-        text-decoration: none;
-    }
-
-    .time-display {
-        font-size: 40px;
-    }
-</style>
-
-
-<div class="wrapper">
-    <div class="week">
+<h1>Текущая неделя</h1>
+    <div class="schedule">
     {{#each exerView}}
         <div class="day">
-            {{#each this.exercises}}
-            <div class="exercise" id='{{this.id}}'>
-                <div class="number">
-                    {{this.number}}
+            <div class="dayTitle">
+				<div>
+					<div class="date">{{date}}</div>
+					<div class="month">мая</div>
                 </div>
-                <div class="sub-title">
-                    {{this.subTitle}}
-                </div>
-                <div>
-                    {{this.gtitle}}
-                </div>
-                <div class="time">
-                    {{this.time}}
-                </div>
-            </div>
-            {{/each}}
+				<span>{{this.dayWeek}}</span>
+			</div>
+            <ul class="dayLessons">
+                {{#each this.exercises}}
+                {{#if this.exist}}
+                <li class="lesson exercise" id="{{this.id}}">
+                    <div class="lessonName">
+                        {{this.subTitle}}
+                    </div>
+                    <div class="lessonTeacher">
+                        <img src="/img/timeTable/man-avatar_1.svg">
+                        <span>{{this.gtitle}}</span>
+                    </div>
+                    <div class="lessonTime">
+                        <img src="/img/timeTable/symbol_2.svg">
+                        <span>{{this.time}}</span>
+                    </div>
+                </li>
+                {{else}}
+                <li class="lesson">
+                    <div class="lessonName">
+                        Окно
+                    </div>
+                    <div class="lessonTeacher">
+                        --
+                    </div>
+                    <div class="lessonTime">
+                        <span>00:00</span>
+                    </div>
+                </li>
+                {{/if}}
+                {{/each}}
+            </ul>
+
         </div>
     {{/each}}
     </div>
-    <div class="info">
-        <div class="name">
-            <h5 class="label">пара</h5>
-            <h1 id="exercise-name" class="exercise-name"></h1>
-        </div>
-        <a id="link" class="link" href="">Подключиться к занятию</a>
-        <div class="group-title">
 
-        </div>
-        <br />
-        <a id="setup" class="link" href="/exercise/edit?id=">Настроить задание</a>
-        <a id="goto" class="link" href="/exercise/edit?id=">Перейти в задание</a>
+<h1>Просмотр занятия</h1>
 
-        <div id="time" class="time-display">
+<div class="lessonAbout info">
+	<div class="lessonAboutInfo">
+		<span>лекция</span>
+		<div class="lessonAboutName exercise-name">
+		</div>
+		<div class="lessonDescription desc">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+		<div class="descriptionPanel">
+			<div class="teacher">
+				<img src="/img/timeTable/man-avatar_1.svg">
+                <div class="group-title teacherName">
 
-        </div>
-    </div>
+                </div>
+			</div>
+			<div class="lessonStart">
+				<img src="/img/timeTable/symbol_2.svg">
+                <div id="time" class="date time-display">
+
+                </div>
+			</div>
+			<div class="teacherPanel">
+				<a id="setup" class="link" href="/exercise/edit?id=">Настроить задание</a>
+				<a id="link" class="link" href="">Присоединиться к занятию</a>
+                <a id="goto" class="link" href="/exercise/edit?id=">Перейти в задание</a>
+			</div>
+		</div>
+	</div>
 </div>
+
 
 <script type="text/javascript">
     let array = {{{exercises}}};
