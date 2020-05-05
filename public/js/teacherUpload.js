@@ -1,5 +1,6 @@
 window.addEventListener("load", () => {
-    let form = document.querySelector('.file-form');
+    let form = document.getElementById("form-file");
+    console.log(form);
     form.addEventListener('submit', upload, false);
 
     let file = document.getElementById("file");
@@ -42,15 +43,13 @@ function upload(e) {
         let fileDel = document.createElement("a");
         fileDel.className = "file-del";
         fileDel.href = "/file/delete?filename=" + file.name + "&path=/teacher";
-        fileDel.innerHTML = "Удалить";
         let fa = document.createElement("i");
-        fa.className = "fa fa-spinner fa-spin";
         viewContent.appendChild(fileDel);
-        viewContent.appendChild(fa);
         newRow.appendChild(viewField);
         newRow.appendChild(viewContent);
 
-        let grid = document.getElementsByClassName("grid-view")[0];
+        let grid = document.getElementsByClassName("file-wrap")[0];
+        console.log();
         grid.appendChild(newRow);
 
         console.log(this.status);

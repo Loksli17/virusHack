@@ -59,7 +59,35 @@ exports.actionIndexTeacher = async (req, res) => {
         if (currentDate.getDay() - 1 == i) {
             exerView[i].current = true;
         }
+
         exerView[i].exercises = [];
+        let dayWeek  = '';
+
+        switch(i){
+            case 0:
+                dayWeek = 'понедельник';
+                break;
+            case 1:
+                dayWeek = 'вторник';
+                break;
+            case 2:
+                dayWeek = 'среда';
+                break;
+            case 3:
+                dayWeek = 'четверг';
+                break;
+            case 4:
+                dayWeek = 'пятница';
+                break;
+            case 5:
+                dayWeek = 'суббота';
+                break;
+        }
+
+        exerView[i].dayWeek = dayWeek;
+        exerView[i].date    = datesWeek.firstDate.getDate();
+        datesWeek.firstDate.setDate(datesWeek.firstDate.getDate() + 1);
+
         for (let j = 0; j < 5; j++) {
             exerView[i].exercises.push({
                 id: 0,
@@ -78,6 +106,7 @@ exports.actionIndexTeacher = async (req, res) => {
             day = date.getDay();
 
         exerView[day - 1].exercises[exercises[i].number - 1].id = exercises[i].id;
+        exerView[day - 1].exercises[exercises[i].number - 1].exist = true;
         exerView[day - 1].exercises[exercises[i].number - 1].time = exercises[i].time;
         exerView[day - 1].exercises[exercises[i].number - 1].number = exercises[i].number;
         exerView[day - 1].exercises[exercises[i].number - 1].subTitle = exercises[i].subTitle;
