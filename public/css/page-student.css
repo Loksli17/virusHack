@@ -359,3 +359,22 @@ margin-right: 5px;
     background: #4E53DF;
     color: #FFFFFF;
 }
+
+input[type="submit"]{
+    margin-top: 15px;
+    width: 319px;
+    height: 32px;
+    background: #6E73FF;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+    font-family: Nunito;
+    font-weight: 100;
+    margin-bottom: 20px;
+}
+
+input[type="submit"]:hover{
+    cursor: pointer;
+    transition: 0.4s;
+    background: #5340C7;
+}

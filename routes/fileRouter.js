@@ -31,7 +31,7 @@ const uploadTeacher = multer({storage: storageConfigTeacher});
 
 
 const fileRouter = express.Router();
-fileRouter.all('/',        uploadStudent.single('file'), fileController.actionFileUpload);
+fileRouter.all('/student', uploadStudent.single('file'), fileController.actionFileUpload);
 fileRouter.all('/teacher', uploadTeacher.single('file'), fileController.actionFileUpload);
 fileRouter.all('/delete',  fileController.actionFileDelete);
 
