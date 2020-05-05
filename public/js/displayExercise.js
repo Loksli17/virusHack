@@ -48,42 +48,7 @@ window.addEventListener("load", () => {
                     thisExercise = e;
                 }
             });
-            // if (wrapper.children[1]) {
-            //     wrapper.removeChild(wrapper.children[1]);
-            // }
-            // //блок с инфой
-            // let info = document.createElement("div");
-            // info.className = "info";
-            // //блок с названием пары
-            // let name = document.createElement("div");
-            // name.className = "name";
-            // //слово "пара"
-            // let label = document.createElement("h5");
-            // label.className = "label";
-            // label.innerHTML = "пара";
-            // //название пары
-            // let exerciseName = document.createElement("h1");
-            // exerciseName.id = "exercise-name";
-            // exerciseName.className = "exercise-name";
-            // exerciseName.innerHTML = thisExercise.subTitle;
-            // //описание пары
-            // let description = document.createElement("div");
-            // description.className = "description";
-            // description.innerHTML = thisExercise.description;
-            // //имя преподавателя
-            // let teacherName = document.createElement("div");
-            // teacherName.className = "teacher-name";
-            // teacherName.innerHTML = thisExercise.teacherFirstName[0] + "." + thisExercise.teacherLastName[0] + ". " + thisExercise.teacherPatronyc;
-            //
-            // // let input = document.
-            //
-            // name.appendChild(label);
-            // name.appendChild(exerciseName);
-            // info.appendChild(name);
-            // info.appendChild(description);
-            // info.appendChild(teacherName);
-            // info.style.visibility = "visible";
-            // wrapper.appendChild(info);
+
             let filesField = document.getElementById("files-field");
             filesField.innerHTML = "";
             thisExercise.filesStudent.forEach((file) => {
@@ -91,13 +56,13 @@ window.addEventListener("load", () => {
                 newRow.className = "view-row";
                 let viewField = document.createElement("div");
                 viewField.className = "view-field";
-                viewField.innerHTML = file;
+                viewField.textContent = file;
                 let viewContent = document.createElement("div");
                 viewContent.className = "view-content";
                 let fileDel = document.createElement("a");
                 fileDel.className = "file-del";
                 fileDel.href = "/file/delete?filename=" + file + "&path=/student";
-                fileDel.innerHTML = "Удалить";
+                fileDel.textContent = "Удалить";
                 let fa = document.createElement("i");
                 fa.className = "fa fa-spinner fa-spin";
                 viewContent.appendChild(fileDel);
@@ -120,22 +85,22 @@ window.addEventListener("load", () => {
             let info = document.getElementsByClassName("info")[0];
 
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
-            exerciseName.innerHTML = thisExercise.subTitle;
+            exerciseName.textContent = thisExercise.subTitle;
 
             let description = document.getElementsByClassName("description")[0];
-            description.innerHTML = thisExercise.description;
+            description.textContent = thisExercise.description;
 
             let attachedFiles = document.getElementById("attached-files");
             attachedFiles.innerHTML = "";
             for (let i = 0; i < thisExercise.files.length; i++) {
                 let file = document.createElement("div");
                 file.className = "attached-file"
-                file.innerHTML = thisExercise.files[i];
+                file.textContent = thisExercise.files[i];
                 attachedFiles.appendChild(file);
             }
 
             let teacherName = document.getElementsByClassName("teacher-name")[0];
-            teacherName.innerHTML = thisExercise.teacherFirstName[0] + "." + thisExercise.teacherLastName[0] + ". " + thisExercise.teacherPatronyc;
+            teacherName.textContent = thisExercise.teacherFirstName[0] + "." + thisExercise.teacherLastName[0] + ". " + thisExercise.teacherPatronyc;
 
             let link = document.getElementsByClassName("link")[0];
             link.href = thisExercise.link;
@@ -149,16 +114,16 @@ window.addEventListener("load", () => {
             let filesField = document.getElementById("files-field");
             filesField.innerHTML = "";
             let exerciseName = document.getElementsByClassName("exercise-name")[0];
-            exerciseName.innerHTML = "";
+            exerciseName.textContent = "";
 
             let description = document.getElementsByClassName("description")[0];
-            description.innerHTML = "";
+            description.textContent = "";
 
             let attachedFiles = document.getElementById("attached-files");
             attachedFiles.innerHTML = "";
 
             let teacherName = document.getElementsByClassName("teacher-name")[0];
-            teacherName.innerHTML = "";
+            teacherName.textContent = "";
             info.style.display = "none";
         }
     }
