@@ -1,0 +1,71 @@
+.groupTable {
+    width: 90%;
+  padding: 15px;
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: repeat(auto, 180px);
+}
+
+.group {
+  position: relative;
+  box-shadow: 0px 5px 8px -3px #ccc;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  border-radius: 5px;
+}
+.group span:nth-child(1) {
+  padding-top: 20px;
+  font-weight: bold;
+}
+.group span:nth-child(2) {
+  font-weight: bold;
+}
+.group span:nth-child(3) {
+  padding-top: 10px;
+}
+.group span:nth-child(4) {
+  padding-bottom: 20px;
+}
+.group span {
+  padding-left: 25px;
+}
+
+.group:before {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  height: 100%;
+  width: 9px;
+  border-radius: 10px;
+  background: #6E73FF;
+}
+
+.groupSearch {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  width: 520px;
+  font-size: 26px;
+}
+
+.faculty, .course {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+select {
+  margin-left: 20px;
+  width: 350px;
+  height: 40px;
+}
+
+a {
+  text-decoration: none;
+  color: #5A5C69;
+}

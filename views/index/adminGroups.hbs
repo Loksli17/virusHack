@@ -1,14 +1,22 @@
 <style media="screen">
     .reset-filter {
         display: inline-block;
-        background: #ccc;
+        background: #fff;
         margin: 10px;
         padding: 5px 10px;
+        box-shadow: 0px 3px 8px -3px #ccc;
+        font-family: Nunito;
+        border-radius: 4px;
     }
     .reset-filter:hover {
         cursor: pointer;
     }
 </style>
+
+<link rel="stylesheet" href="/css/group.css">
+<div class="reset-filter">
+    Сброс фильтрации
+</div>
 
 <select id="selector" class="" name="">
     <option value="" selected disabled>Выберете курс</option>
@@ -17,20 +25,25 @@
     {{/each}}
 </select>
 
-<div class="">
+
+<div class="groupTable">
     {{#each groups}}
-        <a class="group" href="/stat?id={{this.id}}">
+	<a href="/stat?id={{this.id}}">
+		<div class="group">
             <div class="course-id">
                 {{this.cid}}
             </div>
-            курс  : {{this.ctitle}}
-            группа: {{this.gtitle}}
-        </a>
+			<span>{{this.gtitle}}</span>
+			<span>{{this.ctitle}}</span>
+			<span>Естественно-научный институт</span>
+		</div>
+	</a>
     {{/each}}
 </div>
 
-<div class="reset-filter">
-    Сброс фильтрации
-</div>
+
+
+
+
 
 <script src="js/filter.js"></script>

@@ -55,7 +55,7 @@
 }
 .wrapper .menu .menuFooter {
   position: absolute;
-  width: 220px;
+  width: 240px;
   bottom: 10px;
   display: flex;
   flex-flow: column nowrap;
