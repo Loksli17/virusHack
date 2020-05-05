@@ -8,7 +8,10 @@ var ctx1 = document.getElementById('myChart1').getContext('2d');
 console.log(labels, presArr);
 
 let myChart = new Chart(ctx, {
-		    type: 'bar',
+			scaleOverride: true,
+			scaleStartValue: 0,
+			scaleSteps: 2,
+			type: 'bar',
 		    data: {
 		        labels: labels,
 		        datasets: [{
@@ -22,7 +25,8 @@ let myChart = new Chart(ctx, {
 		        scales: {
 		            yAxes: [{
 		                ticks: {
-		                    beginAtZero: true
+		                    beginAtZero: true,
+                    		suggestedMax: 12,
 		                }
 		            }]
 		        }
@@ -32,6 +36,9 @@ let myChart = new Chart(ctx, {
 
 
 let myChart1 = new Chart(ctx1, {
+			scaleOverride: true,
+			scaleStartValue: 0,
+			scaleSteps: 2,
 		    type: 'bar',
 		    data: {
 		        labels: labels,
@@ -46,7 +53,8 @@ let myChart1 = new Chart(ctx1, {
 		        scales: {
 		            yAxes: [{
 		                ticks: {
-		                    beginAtZero: true
+							beginAtZero: true,
+						   suggestedMax: 12,
 		                }
 		            }]
 		        }
